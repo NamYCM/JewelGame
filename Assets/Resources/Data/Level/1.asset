@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 795557fcee0bef3468fe5f77fe42a2ac, type: 3}
+  m_Name: 1
+  m_EditorClassIdentifier: 
+  grids:
+  - Name: Grid 1
+    X: 4
+    Y: 4
+    Position: {x: 1.5, y: 1.5, z: 0}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+    InitialPieces:
+    - type: 9
+      x: 1
+      y: 1
+    - type: 5
+      x: 2
+      y: 1
+    TargetGrids:
+    - TargetGridName: Grid 2
+      ConnectColumns:
+      - originColumn: 3
+        targetColumn: 1
+      - originColumn: 0
+        targetColumn: 0
+    LossFertilityColumns: 
+  - Name: Grid 2
+    X: 2
+    Y: 3
+    Position: {x: 1.5, y: -3, z: 0}
+    Rotation: {x: -0, y: -0, z: -0, w: 1}
+    InitialPieces: []
+    TargetGrids: []
+    LossFertilityColumns: 
+  starScore:
+    LevelType: 2
+    Star1Score: 1
+    Star2Score: 20000
+    Star3Score: 50000
+  levelData:
+    TargetScore: 20
+    MoveAmount: 1
