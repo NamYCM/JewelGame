@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using Michsky.UI.ModernUIPack;
 
 public class UIModelWindow : MonoBehaviour
 {
@@ -26,6 +27,14 @@ public class UIModelWindow : MonoBehaviour
 
     [Header("Input")]
     [SerializeField] TMP_Dropdown dropDown;
+    [SerializeField] CustomInputField inputField1;
+    [SerializeField] TextMeshProUGUI holderInputField1;
+    [SerializeField] CustomInputField inputField2;
+    [SerializeField] TextMeshProUGUI holderInputField2;
+    [SerializeField] CustomInputField inputField3;
+    [SerializeField] TextMeshProUGUI holderInputField3;
+    [SerializeField] CustomInputField inputField4;
+    [SerializeField] TextMeshProUGUI holderInputField4;
 
     [Header("Footer")]
     [SerializeField] Transform footerArea;
@@ -41,6 +50,10 @@ public class UIModelWindow : MonoBehaviour
     Action onDeclineAction;
     Action onAlternateAction;
     Action onEndCloseAction;
+    //To implement action effect to this object after the reset function is called
+    //Because when the reset function is called, this action will be null. We need the coroutine to call it
+    Action onEndCloseActionCoroutine;
+    MonoBehaviour coroutineObject;
 
     UIAnimateCompoment animCompoment;
 
@@ -82,13 +95,24 @@ public class UIModelWindow : MonoBehaviour
             //call end close action after set active false to avoid set active false
             //if we want to open model window on end close action
             onEndCloseAction?.Invoke();
+            if (onEndCloseActionCoroutine != null && coroutineObject)
+            {
+                coroutineObject.StartCoroutine(ImplementAfterResetFunction(onEndCloseActionCoroutine));
+            }
             ResetAction();
         });
     }
 
+    IEnumerator ImplementAfterResetFunction (Action action)
+    {
+        yield return new WaitForEndOfFrame();
+        action?.Invoke();
+    }
+
     private void ResetAction ()
     {
-        onEndCloseAction = onAlternateAction = onConfirmAction = onDeclineAction = null;
+        coroutineObject = null;
+        onEndCloseActionCoroutine = onEndCloseAction = onAlternateAction = onConfirmAction = onDeclineAction = null;
     }
 
     private void ResetActive ()
@@ -108,6 +132,16 @@ public class UIModelWindow : MonoBehaviour
         //set data input area
         dropDown.ClearOptions();
         dropDown.gameObject.SetActive(false);
+
+        inputField1.inputText.text = inputField2.inputText.text = inputField3.inputText.text = inputField4.inputText.text = "";
+        holderInputField1.text = holderInputField2.text = holderInputField3.text = holderInputField4.text = "Placeholder...";
+        inputField1.inputText.contentType = inputField2.inputText.contentType = inputField3.inputText.contentType = inputField4.inputText.contentType = TMP_InputField.ContentType.Standard;
+        inputField1.inputText.characterLimit = inputField2.inputText.characterLimit = inputField3.inputText.characterLimit = inputField4.inputText.characterLimit = 0;
+
+        inputField1.gameObject.SetActive(false);
+        inputField2.gameObject.SetActive(false);
+        inputField3.gameObject.SetActive(false);
+        inputField4.gameObject.SetActive(false);
 
         //set active footer area
         confirmButton.gameObject.SetActive(true);
@@ -213,6 +247,13 @@ public class UIModelWindow : MonoBehaviour
         onEndCloseAction += action;
     }
 
+    /// <summary>use to when you want open this model window at the end of close with actions are not null</summary>
+    public void OnEndCloseActionCoroutine(MonoBehaviour coroutineObject, Action action)
+    {
+        this.coroutineObject = coroutineObject;
+        onEndCloseActionCoroutine += action;
+    }
+
     public void ChangeConfirmButtonName(string name)
     {
         confirmText.text = name;
@@ -267,9 +308,65 @@ public class UIModelWindow : MonoBehaviour
         dropDown.AddOptions(options);
     }
 
+    public void SetInputField1 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        inputField1.gameObject.SetActive(true);
+        inputField1.inputText.contentType = contentType;
+        inputField1.inputText.characterLimit = characterLimit;
+
+        if (!string.IsNullOrWhiteSpace(holder)) holderInputField1.SetText(holder);
+        if (!string.IsNullOrWhiteSpace(value)) inputField1.inputText.text = value;
+    }
+    public void SetInputField2 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        inputField2.gameObject.SetActive(true);
+        inputField2.inputText.contentType = contentType;
+        inputField2.inputText.characterLimit = characterLimit;
+
+        if (!string.IsNullOrWhiteSpace(holder)) holderInputField2.SetText(holder);
+        if (!string.IsNullOrWhiteSpace(value)) inputField2.inputText.text = value;
+    }
+    public void SetInputField3 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        inputField3.gameObject.SetActive(true);
+        inputField3.inputText.contentType = contentType;
+        inputField3.inputText.characterLimit = characterLimit;
+
+        if (!string.IsNullOrWhiteSpace(holder)) holderInputField3.SetText(holder);
+        if (!string.IsNullOrWhiteSpace(value)) inputField3.inputText.text = value;
+    }
+    public void SetInputField4 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        inputField4.gameObject.SetActive(true);
+        inputField4.inputText.contentType = contentType;
+        inputField4.inputText.characterLimit = characterLimit;
+
+        if (!string.IsNullOrWhiteSpace(holder)) holderInputField4.SetText(holder);
+        if (!string.IsNullOrWhiteSpace(value)) inputField4.inputText.text = value;
+    }
+
     public string GetInputValue ()
     {
-        return dropDown.options[dropDown.value].text;
+        if (inputField1.gameObject.activeSelf) return inputField1.inputText.text;
+        if (dropDown.IsActive()) return dropDown.options[dropDown.value].text;
+
+        return null;
+    }
+    public string GetInputField1 ()
+    {
+        return inputField1.gameObject.activeSelf ? inputField1.inputText.text : null;
+    }
+    public string GetInputField2 ()
+    {
+        return inputField2.gameObject.activeSelf ? inputField2.inputText.text : null;
+    }
+    public string GetInputField3 ()
+    {
+        return inputField3.gameObject.activeSelf ? inputField3.inputText.text : null;
+    }
+    public string GetInputField4 ()
+    {
+        return inputField4.gameObject.activeSelf ? inputField4.inputText.text : null;
     }
 
     public void Show()

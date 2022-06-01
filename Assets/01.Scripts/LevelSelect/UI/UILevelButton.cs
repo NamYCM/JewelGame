@@ -86,15 +86,18 @@ public class UILevelButton : MonoBehaviour, IObserver
 
     private void OnButtonClicked ()
     {
-        LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Updating current level of user").Show();
-
-        //ensure this coroutine always run regardless this object is deactived
-        LevelSelectManager.Instance.StartCoroutine(Data.UpdateCurrentLevel(level, () => {
-            LevelSelectManager.Instance.ModelWindow.StartBuild.OnEndCloseAction(() => {
-                UILoader.Instance.LoadScene("GamePlay");
-            }).Close();
+        // LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Updating current level of user").Show();
+        UILoader.Instance.CanLoad = false;
+        UILoader.Instance.LoadScene("GamePlay");
+        APIAccessObject.Instance.StartCoroutine(Data.UpdateCurrentLevel(level, () => {
+            UILoader.Instance.CanLoad = true;
+            // LevelSelectManager.Instance.ModelWindow.StartBuild.OnEndCloseAction(() => {
+            //     UILoader.Instance.LoadScene("GamePlay");
+            // }).Close();
         }, (message) => {
-            LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("update current level failed").SetMessage(message).Show();
+            UILoader.Instance.CanLoad = true;
+            Debug.LogError("update current level failed \n" + message);
+            // LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("update current level failed").SetMessage(message).Show();
         }));
     }
 

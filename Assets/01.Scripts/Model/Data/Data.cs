@@ -9,6 +9,7 @@ public static class Data
     private static DataUser user;
     private static LevelData level;
     private static DataShop shop;
+    private static string token;
 
     static Data ()
     {
@@ -44,6 +45,13 @@ public static class Data
     //         CreateDataObject();
     //     }
     // }
+
+    public static void SetToken (string value)
+    {
+        token = value;
+    }
+    // public static string GetToken () => token;
+    public static string GetBearer () => "Bearer " + token;
 
     public static IEnumerator AddLevel (BuildingMap map, Action onSuccessfulGet, Action<string> onFailedGet)
     {

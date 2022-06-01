@@ -83,6 +83,27 @@ public class WindowInputBuilder<B> : WindowContentBuilder<B> where B : WindowInp
         modelWindow.SetDropDownInput(options);
         return Self;
     }
+
+    public B SetInputField1 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        modelWindow.SetInputField1(holder, value, contentType, characterLimit);
+        return Self;
+    }
+    public B SetInputField2 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        modelWindow.SetInputField2(holder, value, contentType, characterLimit);
+        return Self;
+    }
+    public B SetInputField3 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        modelWindow.SetInputField3(holder, value, contentType, characterLimit);
+        return Self;
+    }
+    public B SetInputField4 (string holder, string value, TMP_InputField.ContentType contentType = TMP_InputField.ContentType.Standard, int characterLimit = 0)
+    {
+        modelWindow.SetInputField4(holder, value, contentType, characterLimit);
+        return Self;
+    }
 }
 
 public class WindowFooterBuilder<B> : WindowInputBuilder<B> where B : WindowFooterBuilder<B>
@@ -134,6 +155,13 @@ public class WindowFooterBuilder<B> : WindowInputBuilder<B> where B : WindowFoot
     public B OnEndCloseAction (Action action)
     {
         modelWindow.OnEndCloseAction(action);
+        return Self;
+    }
+
+    /// <summary>use to when you want open this model window at the end of close with actions are not null</summary>
+    public B OnEndCloseActionCoroutine (MonoBehaviour coroutineObject, Action action)
+    {
+        modelWindow.OnEndCloseActionCoroutine(coroutineObject, action);
         return Self;
     }
 }

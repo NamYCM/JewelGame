@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class UISignUpHandle : MonoBehaviour
 {
     Button signUpButton;
-    TMP_InputField username, password;
+    [SerializeField] TMP_InputField username, password, verifyPassword;
 
     UILoginController loginController;
 
@@ -15,14 +15,20 @@ public class UISignUpHandle : MonoBehaviour
 
     private void OnSignUpCLicked ()
     {
-        if (!username || !password)
+        if (!username || !password || !verifyPassword)
         {
             throw new System.NullReferenceException("username or password input is null");
         }
 
-        if (username.text.Trim() == "" || password.text.Trim() == "")
+        if (username.text.Trim() == "" || password.text.Trim() == "" || verifyPassword.text.Trim() == "")
         {
             loginController.ModelWindow.StartBuild.SetTitle("Try again").SetMessage("username and password is not allowed empty").Show();
+            return;
+        }
+
+        if (password.text.Trim().CompareTo(verifyPassword.text.Trim()) != 0)
+        {
+            loginController.ModelWindow.StartBuild.SetTitle("Try again").SetMessage("verify password is not correct").Show();
             return;
         }
 
@@ -42,11 +48,8 @@ public class UISignUpHandle : MonoBehaviour
         }));
     }
 
-    public void Init (TMP_InputField username, TMP_InputField password)
+    public void Init ()
     {
-        this.username = username;
-        this.password = password;
-
         signUpButton.onClick.AddListener(OnSignUpCLicked);
 
         loginController = UILoginController.Instance;

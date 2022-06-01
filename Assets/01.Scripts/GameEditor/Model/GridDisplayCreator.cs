@@ -195,7 +195,7 @@ public class GridDisplayCreator : MonoBehaviour {
 //         Selection.activeObject = map;
 // #endif
 
-        StartCoroutine(Data.UpdateLevel(new KeyValuePair<int, BuildingMap>(int.Parse(GameEditorSystem.Instance.FileManager.Map.name), map), onSuccessful, onFailed));
+        APIAccessObject.Instance.StartCoroutine(Data.UpdateLevel(new KeyValuePair<int, BuildingMap>(int.Parse(GameEditorSystem.Instance.FileManager.Map.name), map), onSuccessful, onFailed));
     }
 
     //TODO change assetDatabase into another to player can be create map after build
@@ -205,7 +205,7 @@ public class GridDisplayCreator : MonoBehaviour {
         string mapName = GetMapName(true);
         // SaveMapToDatabase(map, mapName);
 
-        StartCoroutine(Data.AddLevel(map, onSuccessful, onFailed));
+        APIAccessObject.Instance.StartCoroutine(Data.AddLevel(map, onSuccessful, onFailed));
     }
 
     public void ResetGrids ()

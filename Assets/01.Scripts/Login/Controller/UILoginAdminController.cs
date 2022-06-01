@@ -14,6 +14,10 @@ public class UILoginAdminController : SingletonMono<UILoginController>
 
     DataUser user;
 
+    private void Awake() {
+        UILoader.Instance.Close();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -42,7 +46,8 @@ public class UILoginAdminController : SingletonMono<UILoginController>
         // string jsonUser = JsonUtility.ToJson(user);
 
         modelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Sign In").Show();
-        StartCoroutine(APIAccesser.LoginAdminCoroutine(username.text, password.text, (userData) => {
+        APIAccessObject.Instance.StartCoroutine(APIAccesser.LoginAdminCoroutine(username.text, password.text, (userData) => {
+            Data.SetToken(userData.token);
             modelWindow.OnEndCloseAction(() => {
                 UILoader.Instance.LoadScene("GameEditor");
             });
@@ -50,5 +55,46 @@ public class UILoginAdminController : SingletonMono<UILoginController>
         }, (message) => {
             modelWindow.StartBuild.SetLoadingWindow(false).SetTitle("error").SetMessage(message).Show();
         }));
+    }
+
+    string email = null;
+
+    public void ForgetPassword ()
+    {
+        modelWindow.StartBuild.SetTitle("Enter your email").SetInputField1("Email", email, TMP_InputField.ContentType.EmailAddress).OnConfirmAction(() => {
+            email = modelWindow.GetInputValue();
+            if (string.IsNullOrEmpty(email))
+            {
+                modelWindow.OnEndCloseActionCoroutine(this, () => {
+                    modelWindow.StartBuild.SetTitle("Error").SetMessage("Please enter your email").OnEndCloseActionCoroutine(this, ForgetPassword).Show();
+                });
+            }
+            else
+            {
+                modelWindow.OnEndCloseAction(() => {
+                    modelWindow.StartBuild.SetTitle("Sending").SetMessage("Sending reset password link to your email").SetLoadingWindow(true).Show();
+                    APIAccessObject.Instance.StartCoroutine(APIAccesser.ResetPasswordAdmin(email, () => {
+                        modelWindow.OnEndCloseAction(() => {
+                            modelWindow.StartBuild.SetTitle("Successful").SetMessage("Please check your email").Show();
+                        });
+                        modelWindow.Close();
+                    }, (message) => {
+                        modelWindow.OnEndCloseActionCoroutine(this, () => {
+                            modelWindow.StartBuild.SetTitle("Failed").SetMessage(message).OnEndCloseActionCoroutine(this, ForgetPassword).Show();
+                        });
+                        modelWindow.Close();
+                    }));
+                });
+            }
+        }).OnDeclineAction(() => {
+            email = modelWindow.GetInputValue();
+        }).Show();
+    }
+
+    public void Quit ()
+    {
+        modelWindow.StartBuild.SetTitle("Confirm").SetMessage("Do you want to quit?").OnConfirmAction(() => {
+            Application.Quit();
+        }).OnDeclineAction(() => {}).Show();
     }
 }

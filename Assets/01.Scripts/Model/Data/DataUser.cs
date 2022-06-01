@@ -7,6 +7,7 @@ using UnityEngine.Networking;
 [Serializable]
 public class DataUser
 {
+    public string token;
     public int currentLevel = 1;
     public string password;
     public string username;
@@ -26,10 +27,10 @@ public class DataUser
         levelDatas = new Dictionary<int, DataUserLevel>();
 
         //TODO get data from firestore
-        for (int count = 0; count < Data.MaxLevel(); count ++)
-        {
-           levelDatas.Add(count + 1, new DataUserLevel(count + 1));
-        }
+        // for (int count = 0; count < Data.MaxLevel(); count ++)
+        // {
+        //    levelDatas.Add(count + 1, new DataUserLevel(count + 1));
+        // }
 
         specialPiecesAmount = new Dictionary<PieceType, uint>();
         specialPiecesAmount.Add(PieceType.COLUMN_CLEAR, 0);
@@ -118,6 +119,7 @@ public class DataUser
 
     public void ReduceMoneyInLocal (uint amount)
     {
+        if (money < amount) throw new Exception($"money is smaller price");
         money -= amount;
     }
 
@@ -128,6 +130,7 @@ public class DataUser
 
     public void ReduceItemInLocal (PieceType specialType)
     {
+        if (specialPiecesAmount[specialType] == 0) throw new Exception($"amount of {specialType} is 0");
         if (!IsSpecialItem(specialType)) throw new Exception($"{specialType} is not a special piece");
 
         specialPiecesAmount[specialType]--;
@@ -143,6 +146,7 @@ public class DataUser
 
     public void UseItem (PieceType specialType)
     {
+        if (specialPiecesAmount[specialType] == 0) throw new Exception($"amount of {specialType} is 0");
         if (!IsSpecialItem(specialType)) throw new Exception($"{specialType} is not a special piece");
 
         APIAccessObject.Instance.StartCoroutine(APIAccesser.UseItem(specialType, this));
@@ -247,5 +251,22 @@ public class DataUserLevel
         levelNumber = data.levelNumber;
         state = data.state;
         score = data.score;
+    }
+}
+
+[Serializable]
+public class DataAdmin
+{
+    public string password;
+    public string username;
+    public string code;
+
+    public DataAdmin () {}
+
+    public DataAdmin (string username, string password, string code)
+    {
+        this.username = username;
+        this.password = password;
+        this.code = code;
     }
 }

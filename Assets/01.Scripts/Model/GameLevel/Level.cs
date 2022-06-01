@@ -109,7 +109,7 @@ public abstract class Level : MonoBehaviour, IObserver
 
     protected void OnGameWin()
     {
-        gameManager.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Updating user data").Show();
+        // gameManager.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Updating user data").Show();
 
         Data.ChangeUserMoney(currentScore, null, (message) => {
             throw new System.Exception(message);
@@ -119,19 +119,24 @@ public abstract class Level : MonoBehaviour, IObserver
             throw new System.Exception(message);
         });
 
+        hud.OnGameWin(currentScore);
         //check is max level
         if (Data.IsMaxLevel(Data.GetCurrentLevel()))
         {
-            gameManager.ModelWindow.Close();
-            hud.OnGameWin(currentScore);
+            // gameManager.ModelWindow.Close();
+            // hud.OnGameWin(currentScore);
         }
         else
         {
             //unclock the next level
+            gameManager.IsUnclocking = true;
             APIAccessObject.Instance.StartCoroutine(Data.UnlockLevel(Data.GetNextLevel(), () => {
-                gameManager.ModelWindow.Close();
-                hud.OnGameWin(currentScore);
+                gameManager.IsUnclocking = false;
+                Debug.Log("next level is unclocked");
+                UILoader.Instance.CanLoad = GameManager.Instance.IsUpdatingCurrentLevel == false && GameManager.Instance.IsUnclocking == false;
+                // hud.OnGameWin(currentScore);
             }, (message) => {
+                gameManager.IsUnclocking = false;
                 throw new System.Exception(message);
             }));
         }

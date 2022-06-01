@@ -103,15 +103,23 @@ public class GameOver : MonoBehaviour
             return;
         }
 
-        GameManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Updating current level of user").Show();
+        // GameManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Updating current level of user").Show();
 
-        //ensure this coroutine always run regardless this object is deactived
-        GameManager.Instance.StartCoroutine(Data.UpdateCurrentLevel(Data.GetNextLevel(), () => {
-            GameManager.Instance.ModelWindow.StartBuild.OnEndCloseAction(() => {
-                LoadGamePlayScene();
-            }).Close();
+        UILoader.Instance.CanLoad = false;
+        GameManager.Instance.IsUpdatingCurrentLevel = true;
+        APIAccessObject.Instance.StartCoroutine(Data.UpdateCurrentLevel(Data.GetNextLevel(), () => {
+            // GameManager.Instance.ModelWindow.StartBuild.OnEndCloseAction(() => {
+            //     LoadGamePlayScene();
+            // }).Close();
+            GameManager.Instance.IsUpdatingCurrentLevel = false;
+            Debug.Log("current level is updated");
+            UILoader.Instance.CanLoad = GameManager.Instance.IsUpdatingCurrentLevel == false && GameManager.Instance.IsUnclocking == false;
         }, (message) => {
-            GameManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("update current level failed").SetMessage(message).Show();
+            GameManager.Instance.IsUpdatingCurrentLevel = false;
+            UILoader.Instance.CanLoad = GameManager.Instance.IsUpdatingCurrentLevel == false && GameManager.Instance.IsUnclocking == false;
+            // UILoader.Instance.CanLoad = true;
+            Debug.LogError("update current level failed \n" + message);
+            // GameManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("update current level failed").SetMessage(message).Show();
         }));
     }
 

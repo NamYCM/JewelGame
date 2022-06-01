@@ -15,9 +15,26 @@ public class UIUserItem : MonoBehaviour
     public PieceType SpecialType => _specialType;
     public Image Icon => _icon;
 
+    CustomButton _button;
+
+    public void Init ()
+    {
+        _button = GetComponentInChildren<CustomButton>();
+        _button.OnDown.AddListener(() => {
+            GameManager.Instance.InputPlayController.ChooseSkill(this);
+        });
+
+        UpdateAmount();
+    }
+
     public void UpdateAmount ()
     {
-        _amount.text = Data.GetAmountOfSpecialPiece(_specialType).ToString();
+        var newAmount = Data.GetAmountOfSpecialPiece(_specialType);
+        _amount.text = newAmount.ToString();
+        if (newAmount == 0 && _button)
+        {
+            _button.Disable();
+        }
     }
 
     public void IncreteAmount ()

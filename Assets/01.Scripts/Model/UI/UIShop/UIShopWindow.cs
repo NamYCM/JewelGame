@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -45,7 +44,7 @@ public class UIShopWindow : MonoBehaviour
     public UIShopItem ShopItemPrefab => _shopItemPrefab;
 #endregion
 
-    public void Init ()
+    public void Init (Action onSucessfulLoad = null, Action onFailedLoad = null)
     {
         LoadItemDataFromFirestore((dataShop) => {
             Data.InitShopData(dataShop);
@@ -71,7 +70,8 @@ public class UIShopWindow : MonoBehaviour
             }
 
             UpdateUserData();
-        }, null);
+            onSucessfulLoad?.Invoke();
+        }, onFailedLoad);
     }
 
     void UpdateUserMoney ()
@@ -232,24 +232,23 @@ public class UIShopWindow : MonoBehaviour
     public void LoadItemDataFromFirestore (Action<DataShop> onSucessfulLoad, Action onFailedLoad)
     {
         APIAccessObject.Instance.StartCoroutine(APIAccesser.GetAllItemsCoroutine((dataShop) => {
-                _shopItems.Clear();
-                foreach (var item in dataShop.shopItems)
-                {
-                    _shopItems.Add(new UIShopWindow.ShopItem(){
-                        Price = item.Value.Price,
-                        SpecialType = item.Key,
-                        //TODO load all icon into resources folder and use Resources.Load instead
-                        Icon = AssetDatabase.LoadAssetAtPath<Sprite>(item.Value.IconPath)
-                    });
-                }
+            _shopItems.Clear();
+            foreach (var item in dataShop.shopItems)
+            {
+                _shopItems.Add(new UIShopWindow.ShopItem(){
+                    Price = item.Value.Price,
+                    SpecialType = item.Key,
+                    Icon = Resources.Load<Sprite>(item.Value.IconPath)
+                });
+            }
 
-                onSucessfulLoad?.Invoke(dataShop);
-                // shopWindow.InitItems(shopWindow.ShopItems);
-                //to save changed objects
-                // EditorUtility.SetDirty(shopWindow);
-            }, (message) => {
-                onFailedLoad?.Invoke();
-                throw new Exception(message);
-            }));
+            onSucessfulLoad?.Invoke(dataShop);
+            // shopWindow.InitItems(shopWindow.ShopItems);
+            //to save changed objects
+            // EditorUtility.SetDirty(shopWindow);
+        }, (message) => {
+            onFailedLoad?.Invoke();
+            throw new Exception(message);
+        }));
     }
 }

@@ -30,16 +30,22 @@ public class GameEditorSystem : MonoBehaviour
         fileManager = GetComponent<FileManager>();
 
         //load level data
-        uiEditor.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Loading data level").Show();
+        // uiEditor.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Loading data level").Show();
         // StartCoroutine(Data.InitLevelData(() => {
         //     uiEditor.ModelWindow.Close();
         // }, (message) => {
         //     uiEditor.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("Error").SetMessage(message).Show();
         // }));
         Data.InitLevelData(() => {
-            uiEditor.ModelWindow.Close();
+            // uiEditor.ModelWindow.Close();
+            UILoader.Instance.Close();
         }, (message) => {
-            uiEditor.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("Error").SetMessage(message).Show();
+            Debug.LogError("load level data failed \n" + message);
+            UILoader.Instance.OnEndLoading.AddListener(() => {
+                uiEditor.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("Error").SetMessage(message).Show();
+            });
+            UILoader.Instance.Close();
+            // uiEditor.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("Error").SetMessage(message).Show();
         });
     }
 
@@ -197,15 +203,12 @@ public class GameEditorSystem : MonoBehaviour
                     });
 
                     gridDisplayCreator.SaveLevel(() => {
-                        Debug.Log("1");
                         //get new map data
                         Data.InitLevelDataFromFirebase(() => {
-                        Debug.Log("2");
                             //close loading window
                             ResetEditor();
                             uiEditor.ModelWindow.Close();
                         }, (err) => {
-                        Debug.Log("3");
                             //show error message
                             uiEditor.ModelWindow.OnEndCloseAction(() => {
                                 uiEditor.ModelWindow.StartBuild.SetTitle("error").SetMessage(err).Show();
@@ -283,5 +286,89 @@ public class GameEditorSystem : MonoBehaviour
         gridDisplayCreator.ConnectGridDisplays(mapData.Grids);
 
         uiEditor.UILevelEditor.SetLevel(mapData);
+    }
+
+    public void LoadHomeScene ()
+    {
+        uiEditor.ModelWindow.StartBuild.SetTitle("Confirm").SetMessage("Are you sure to log out?").OnConfirmAction(() => {
+            UILoader.Instance.LoadScene("LoginAdmin");
+        }).Show();
+    }
+
+    string email, password, verifyPassword, code;
+
+    void SignUpAdmin ()
+    {
+        // uiEditor.ModelWindow.OnEndCloseActionCoroutine(this, () => {
+        uiEditor.ModelWindow.StartBuild.SetTitle("Sign Up Admin")
+            .SetInputField1("Email...", email)
+            .SetInputField2("Password...", password, TMPro.TMP_InputField.ContentType.Password)
+            .SetInputField3("Verify Password...", verifyPassword, TMPro.TMP_InputField.ContentType.Password)
+            .SetInputField4("Code...", code, TMPro.TMP_InputField.ContentType.IntegerNumber, 6)
+            .OnConfirmAction(() => {
+                email = uiEditor.ModelWindow.GetInputField1();
+                password = uiEditor.ModelWindow.GetInputField2();
+                verifyPassword = uiEditor.ModelWindow.GetInputField3();
+                code = uiEditor.ModelWindow.GetInputField4();
+
+                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password)
+                    || string.IsNullOrWhiteSpace(verifyPassword) || string.IsNullOrWhiteSpace(code))
+                {
+                    uiEditor.ModelWindow.OnEndCloseActionCoroutine(this, () => {
+                        uiEditor.ModelWindow.StartBuild.SetTitle("Sign Up Failed")
+                            .SetMessage("Don't let the input field is blank!!!")
+                            .OnEndCloseActionCoroutine(this, SignUpAdmin).Show();
+                    });
+                    return;
+                }
+
+                if (password.Trim().CompareTo(verifyPassword.Trim()) != 0)
+                {
+                    uiEditor.ModelWindow.OnEndCloseActionCoroutine(this, () => {
+                        uiEditor.ModelWindow.StartBuild.SetTitle("Sign Up Failed")
+                            .SetMessage("password and verify password does not match")
+                            .OnEndCloseActionCoroutine(this, SignUpAdmin).Show();
+                    });
+                    return;
+                }
+
+                // sign up admin
+                DataAdmin admin = new DataAdmin(email, password, code);
+                uiEditor.ModelWindow.OnEndCloseAction(() => {
+                    uiEditor.ModelWindow.StartBuild.SetTitle("Siging Up").SetMessage("Please wait...").SetLoadingWindow(true).Show();
+
+                    APIAccessObject.Instance.StartCoroutine(APIAccesser.SignUpAdminCoroutine(admin, () => {
+                        email = password = verifyPassword = code = null;
+                        uiEditor.ModelWindow.OnEndCloseAction(() => {
+                            uiEditor.ModelWindow.StartBuild.SetTitle("Congratulations!!!").SetMessage("Sign up succesful").Show();
+                        });
+                        uiEditor.ModelWindow.Close();
+                    }, (message) => {
+                        uiEditor.ModelWindow.OnEndCloseActionCoroutine(this, () => {
+                            uiEditor.ModelWindow.StartBuild.SetTitle("Sign Up Failed").SetMessage(message).OnEndCloseActionCoroutine(this, SignUpAdmin).Show();
+                        });
+                        uiEditor.ModelWindow.Close();
+                    }));
+                });
+            }).OnDeclineAction(() => {
+                email = uiEditor.ModelWindow.GetInputField1();
+                password = uiEditor.ModelWindow.GetInputField2();
+                verifyPassword = uiEditor.ModelWindow.GetInputField3();
+                code = uiEditor.ModelWindow.GetInputField4();
+            }).Show();
+        // });
+    }
+
+    public void RegisterNewAdminAccount ()
+    {
+        uiEditor.ModelWindow.StartBuild.SetTitle("Are you sure to create new admin account?").SetMessage("You will be recieved a verify code in you email").OnConfirmAction(() => {
+            //send verify code
+            APIAccessObject.Instance.StartCoroutine(APIAccesser.SendVerifyGmail(null, (message) => {
+                Debug.LogError(message);
+            }));
+            uiEditor.ModelWindow.OnEndCloseActionCoroutine(this, () => {
+                SignUpAdmin();
+            });
+        }).OnDeclineAction(() => {}).Show();
     }
 }

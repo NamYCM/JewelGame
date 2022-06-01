@@ -17,7 +17,7 @@ public class UIShopWindowEditor : Editor {
             {
                 data.shopItems.Add(item.SpecialType, new DataShop.ShopItem(){
                     Price = item.Price,
-                    IconPath = AssetDatabase.GetAssetPath(item.Icon)
+                    IconPath =  AssetDatabase.GetAssetPath(item.Icon).Substring(17).Split('.')[0]
                 });
             }
 

@@ -14,11 +14,11 @@ public class BlurPanel : Image
 
     CanvasGroup canvasGroup;
 
-    protected override void Reset()
-    {
-        base.Reset();
-        color = Color.black * 0.1f;
-    }
+    // protected override void Reset()
+    // {
+    //     base.Reset();
+    //     color = Color.black * 0.1f;
+    // }
 
     protected override void Awake()
     {
@@ -29,7 +29,7 @@ public class BlurPanel : Image
     protected override void OnEnable()
     {
         base.OnEnable();
-        
+
         if (Application.isPlaying)
         {
             material.SetFloat("_Size", 0);
@@ -41,7 +41,7 @@ public class BlurPanel : Image
                     material.SetFloat("_Size", x);
                     canvasGroup.alpha = x;
                 },
-                1f, time 
+                1f, time
             ).SetDelay(delay).SetUpdate(true);
         }
     }

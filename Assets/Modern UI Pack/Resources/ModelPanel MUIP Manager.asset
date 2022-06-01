@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb7cf53b7c3b36a4b9f4d2b688942503, type: 3}
-  m_Name: MUIP Manager
+  m_Name: ModelPanel MUIP Manager
   m_EditorClassIdentifier: 
   enableDynamicUpdate: 1
   enableExtendedColorPicker: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   hSelectorInvertAnimation: 0
   hSelectorLoopSelection: 1
   inputFieldFont: {fileID: 11400000, guid: 4bd810f1cbcb0f446a8f5a31453e243f, type: 2}
-  inputFieldFontSize: 28
+  inputFieldFontSize: 9
   inputFieldColor: {r: 0.11372549, g: 0.27058825, b: 0.41568628, a: 1}
   modalWindowTitleFont: {fileID: 11400000, guid: fa328c1ae3ffb6b4583cf371153b0be6,
     type: 2}

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class LevelSelectManager : SingleSubject<LevelSelectManager>
 {
@@ -20,17 +21,33 @@ public class LevelSelectManager : SingleSubject<LevelSelectManager>
 
         try
         {
-            _shopWindow.Init();
+            _shopWindow.Init(() => {
+                // UILoader.Instance.OnEndLoading.AddListener(() => {
+                //     _snapController.SelectPage(_levelButtonCreater.GetPageConstanceCurrentLevel());
+                // });
+                UILoader.Instance.Close();
+                _snapController.SelectPage(_levelButtonCreater.GetPageConstanceCurrentLevel());
+                // StartCoroutine(InitPages(0.1f));
+            }, () => {
+                //disable shop button
+                Debug.LogWarning("init shop failed");
+            });
         }
         catch (System.Exception)
         {
-             // TODO
+            // TODO
         }
     }
 
     private void Start()
     {
         _levelButtonCreater.Init();
+        // _snapController.SelectPage(_levelButtonCreater.GetPageConstanceCurrentLevel());
+    }
+
+    IEnumerator InitPages (float delay)
+    {
+        yield return new WaitForSeconds(delay);
         _snapController.SelectPage(_levelButtonCreater.GetPageConstanceCurrentLevel());
     }
 }

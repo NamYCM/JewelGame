@@ -7,7 +7,7 @@ using UnityEngine.Networking;
 
 public static class APIAccesser
 {
-#region UserAPIs
+#region  LoginAPIs
     /// <summary>Sign in</summary>
     public static IEnumerator LoginCoroutine(DataUser user, Action<DataUser> onSuccessfulSignIn, Action<string> onFailedSignIn)
     {
@@ -66,35 +66,6 @@ public static class APIAccesser
         }
     }
 
-    public static IEnumerator GetUserCoroutine(DataUser user, Action<DataUser> onSuccessfulGet, Action<string> onFailedGet)
-    {
-        using (UnityWebRequest www = UnityWebRequest.Get(UrlUtility.GetUserInforUrl(user.username)))
-        {
-            yield return www.SendWebRequest();
-
-            if (www.isNetworkError)
-            {
-                throw new Exception("something wrong in send www request \n" + www.error);
-            }
-            else
-            {
-                string body = www.downloadHandler.text;
-
-                if (www.responseCode == 200)
-                {
-                    DataUser userData = JsonConvert.DeserializeObject<DataUser>(body);
-                    onSuccessfulGet?.Invoke(userData);
-                }
-                else
-                {
-                    Debug.LogWarning("Get user infor failed!!\n" + body);
-                    onFailedGet?.Invoke(body);
-                }
-
-            }
-        }
-    }
-
     /// <summary>sign up</summary>
     public static IEnumerator SignUpCoroutine(DataUser user, Action onSuccessfulSignUp, Action<string> onFailedSignUp)
     {
@@ -120,11 +91,90 @@ public static class APIAccesser
         }
     }
 
+    public static IEnumerator LoadAllMapCoroutine (string bodyJsonString)
+    {
+        if (bodyJsonString == null) yield break;
+
+        Debug.Log(bodyJsonString);
+
+        string url = UrlUtility.LOAD_ALL_MAP_URL;
+
+        var request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(bodyJsonString);
+        request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.responseCode == 200)
+        {
+            Debug.Log("Load succesful");
+        }
+        else
+        {
+            Debug.Log(request.downloadHandler.text);
+        }
+    }
+
+    public static IEnumerator ResetPasswordAdmin (string email, Action onSucessfull, Action<string> onFailed)
+    {
+        var request = new UnityWebRequest(UrlUtility.ResetPasswordAdminUrl(email), "PUT");
+        request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+
+        yield return request.SendWebRequest();
+
+        if (request.responseCode == 200)
+        {
+            onSucessfull?.Invoke();
+        }
+        else
+        {
+            string message = request.downloadHandler.text;
+            onFailed?.Invoke(message);
+        }
+    }
+#endregion
+
+#region UserAPIs
+    public static IEnumerator GetUserCoroutine(DataUser user, Action<DataUser> onSuccessfulGet, Action<string> onFailedGet)
+    {
+        using (UnityWebRequest www = UnityWebRequest.Get(UrlUtility.GetUserInforUrl(user.username)))
+        {
+            www.SetRequestHeader("Authorization", Data.GetBearer());
+
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError)
+            {
+                throw new Exception("something wrong in send www request \n" + www.error);
+            }
+            else
+            {
+                string body = www.downloadHandler.text;
+
+                if (www.responseCode == 200)
+                {
+                    DataUser userData = JsonConvert.DeserializeObject<DataUser>(body);
+                    onSuccessfulGet?.Invoke(userData);
+                }
+                else
+                {
+                    Debug.LogWarning("Get user infor failed!!\n" + body);
+                    onFailedGet?.Invoke(body);
+                }
+
+            }
+        }
+    }
+
     public static IEnumerator UpdateUserLevelDataCoroutine (int level, DataUser data, Action onSucessfulUpdate, Action<string> onFailedUpdate)
     {
         using (UnityWebRequest www = UnityWebRequest.Put(UrlUtility.GetUpdateLevelDataUrl(level), JsonConvert.SerializeObject(data)))
         {
             www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", Data.GetBearer());
 
             yield return www.SendWebRequest();
 
@@ -152,6 +202,7 @@ public static class APIAccesser
         using (UnityWebRequest www = UnityWebRequest.Put(UrlUtility.UPDATE_CURRENT_LEVEL_USER_URL, JsonConvert.SerializeObject(data)))
         {
             www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", Data.GetBearer());
 
             yield return www.SendWebRequest();
 
@@ -180,6 +231,7 @@ public static class APIAccesser
         using (UnityWebRequest www = UnityWebRequest.Put(UrlUtility.GetChangeMoneyUserUrl(changeMoney), JsonConvert.SerializeObject(data)))
         {
             www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", Data.GetBearer());
 
             yield return www.SendWebRequest();
 
@@ -209,6 +261,7 @@ public static class APIAccesser
         using (UnityWebRequest www = UnityWebRequest.Put(UrlUtility.GetBuyItemUrl(type), JsonConvert.SerializeObject(data)))
         {
             www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", Data.GetBearer());
 
             yield return www.SendWebRequest();
 
@@ -230,6 +283,7 @@ public static class APIAccesser
         using (UnityWebRequest www = UnityWebRequest.Put(UrlUtility.GetUseItemUrl(type), JsonConvert.SerializeObject(data)))
         {
             www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", Data.GetBearer());
 
             yield return www.SendWebRequest();
 
@@ -247,33 +301,8 @@ public static class APIAccesser
         }
     }
 #endregion
+
 #region MapAPIs
-    public static IEnumerator LoadAllMapCoroutine (string bodyJsonString)
-    {
-        if (bodyJsonString == null) yield break;
-
-        Debug.Log(bodyJsonString);
-
-        string url = UrlUtility.LOAD_ALL_MAP_URL;
-
-        var request = new UnityWebRequest(url, "POST");
-        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(bodyJsonString);
-        request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
-        request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
-        request.SetRequestHeader("Content-Type", "application/json");
-
-        yield return request.SendWebRequest();
-
-        if (request.responseCode == 200)
-        {
-            Debug.Log("Load succesful");
-        }
-        else
-        {
-            Debug.Log(request.downloadHandler.text);
-        }
-    }
-
     public static IEnumerator AddMapCoroutine (MapLevelData levelData, Action onSucessfulAdd, Action<string> onFailedAdd)
     {
         string bodyJsonString = JsonConvert.SerializeObject(levelData, Formatting.None, new JsonSerializerSettings()
@@ -289,6 +318,7 @@ public static class APIAccesser
         request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
         request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
         request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Authorization", Data.GetBearer());
 
         yield return request.SendWebRequest();
 
@@ -320,6 +350,7 @@ public static class APIAccesser
         using (UnityWebRequest www = UnityWebRequest.Put(UrlUtility.UPDATE_MAP_URL, bodyJsonString))
         {
             www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("Authorization", Data.GetBearer());
 
             yield return www.SendWebRequest();
 
@@ -349,6 +380,7 @@ public static class APIAccesser
     {
         using (UnityWebRequest www = UnityWebRequest.Get(UrlUtility.GET_ALL_MAP_URL))
         {
+            www.SetRequestHeader("Authorization", Data.GetBearer());
             yield return www.SendWebRequest();
 
             if (www.isNetworkError)
@@ -379,6 +411,8 @@ public static class APIAccesser
     {
         using (UnityWebRequest www = UnityWebRequest.Get(UrlUtility.GET_CURRENT_VERSION_OF_MAP_URL))
         {
+            www.SetRequestHeader("Authorization", Data.GetBearer());
+
             yield return www.SendWebRequest();
 
             if (www.isNetworkError)
@@ -403,6 +437,7 @@ public static class APIAccesser
         }
     }
 #endregion
+
 #region ShopAPIs
     public static IEnumerator LoadAllItemsCoroutine (DataShop dataShop)
     {
@@ -434,6 +469,8 @@ public static class APIAccesser
     {
         using (UnityWebRequest www = UnityWebRequest.Get(UrlUtility.ALL_ITEM_URL))
         {
+            www.SetRequestHeader("Authorization", Data.GetBearer());
+
             yield return www.SendWebRequest();
 
             if (www.isNetworkError)
@@ -456,6 +493,54 @@ public static class APIAccesser
                 }
 
             }
+        }
+    }
+#endregion
+
+#region AdminAPIs
+    public static IEnumerator SendVerifyGmail (Action onSucessfull, Action<string> onFailed)
+    {
+        var request = new UnityWebRequest(UrlUtility.SEND_VERIFY_GMAIL_URL, "PUT");
+        request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Authorization", Data.GetBearer());
+
+        yield return request.SendWebRequest();
+
+        if (request.responseCode == 200)
+        {
+            onSucessfull?.Invoke();
+        }
+        else
+        {
+            string message = request.downloadHandler.text;
+            onFailed?.Invoke(message);
+        }
+    }
+
+    public static IEnumerator SignUpAdminCoroutine (DataAdmin admin, Action onSucessfull, Action<string> onFailed)
+    {
+        string bodyJsonString = JsonConvert.SerializeObject(admin);
+
+        string url = UrlUtility.SIGN_UP_ADMIN_URL;
+
+        var request = new UnityWebRequest(url, "POST");
+        byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(bodyJsonString);
+        request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+        request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+        request.SetRequestHeader("Content-Type", "application/json");
+        request.SetRequestHeader("Authorization", Data.GetBearer());
+
+        yield return request.SendWebRequest();
+
+        if (request.responseCode == 200)
+        {
+            onSucessfull?.Invoke();
+        }
+        else
+        {
+            string body = request.downloadHandler.text;
+            onFailed?.Invoke(body);
         }
     }
 #endregion

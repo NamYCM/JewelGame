@@ -1,7 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class GameManager : SingleSubject<GameManager>
 {
+    public bool IsUnclocking = false, IsUpdatingCurrentLevel = false;
+
     [SerializeField] BuildingMap map;
 
     [SerializeField] UIModelWindow modelWindow;
@@ -62,16 +65,22 @@ public class GameManager : SingleSubject<GameManager>
         //TODO caculate the cell of grids
         PiecePool.Instance.InitReadyPiece(30);
 
-        StartGame();
-    }
+        UILoader.Instance.OnEndLoading.AddListener(() => {
+            StartCoroutine(StartGame(0.25f));
+        });
+        UILoader.Instance.Close();
 
-    // start game
-    private void StartGame ()
-    {
         CurrentState = GameState.Filling;
 
         //start level before start fill grids
         levelCreater.StartLevel();
+        // StartGame();
+    }
+
+    // start game
+    private IEnumerator StartGame (float time)
+    {
+        yield return new WaitForSeconds(time);
 
         foreach (var gridElement in Grids)
         {
@@ -125,6 +134,13 @@ public class GameManager : SingleSubject<GameManager>
             default:
                 break;
         }
+    }
+
+    public void LoadHomeScene ()
+    {
+        modelWindow.StartBuild.SetTitle("Confirm").SetMessage("Are you sure to back to menu?").OnConfirmAction(() => {
+            UILoader.Instance.LoadScene("LevelSelect");
+        }).OnDeclineAction(() => {}).Show();
     }
 
     public enum GameState

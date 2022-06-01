@@ -22,12 +22,13 @@ public class UIChain : MonoBehaviour
 
         animator.SetTrigger("Destroy");
         //ensure do not stop coroutine when updating
-        LevelSelectManager.Instance.StartCoroutine(Data.OpenLevel(level, null, (message) => {
+        APIAccessObject.Instance.StartCoroutine(Data.OpenLevel(level, null, (message) => {
             //if it's still on this scene
-            if (LevelSelectManager.Instance)
-            {
-                LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle($"Open level {level} failed").SetMessage(message).Show();
-            }
+            // if (LevelSelectManager.Instance)
+            // {
+            //     LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle($"Open level {level} failed").SetMessage(message).Show();
+            // }
+            Debug.LogWarning($"Open level {level} failed " + message);
         }));
     }
 

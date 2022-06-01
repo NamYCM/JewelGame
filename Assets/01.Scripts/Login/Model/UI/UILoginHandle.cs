@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class UILoginHandle : MonoBehaviour
 {
     Button loginButton;
-    TMP_InputField username, password;
+    [SerializeField] TMP_InputField username, password;
     DataUser user;
 
     UILoginController loginController;
@@ -37,9 +37,28 @@ public class UILoginHandle : MonoBehaviour
         string jsonUser = JsonUtility.ToJson(user);
 
         loginController.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Sign In").Show();
-        StartCoroutine(APIAccesser.LoginCoroutine(user, (userData) => {
+        APIAccessObject.Instance.StartCoroutine(APIAccesser.LoginCoroutine(user, (userData) => {
             Data.InitUserData(userData);
+            Data.SetToken(userData.token);
+
+            loginController.ModelWindow.SetTitle("load map data");
+            Data.InitLevelData(() => {
+                Debug.Log("can load to level select");
+                UILoader.Instance.CanLoad = true;
+
+                // loginController.ModelWindow.OnEndCloseAction(() => {
+                //     UILoader.Instance.LoadScene("LevelSelect");
+                // });
+                // loginController.ModelWindow.Close();
+            }, (message) => {
+                // loginController.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("error").SetMessage(message).Show();
+                UILoader.Instance.CanLoad = true;
+                Debug.LogError("load level data failed: \n" + message);
+            });
+
+            // UILoader.Instance.condition.methodName = Test;
             loginController.ModelWindow.OnEndCloseAction(() => {
+                UILoader.Instance.CanLoad = false;
                 UILoader.Instance.LoadScene("LevelSelect");
             });
             loginController.ModelWindow.Close();
@@ -48,10 +67,15 @@ public class UILoginHandle : MonoBehaviour
         }));
     }
 
-    public void Init (TMP_InputField username, TMP_InputField password)
+    bool Test ()
     {
-        this.username = username;
-        this.password = password;
+        return true;
+    }
+
+    public void Init ()
+    {
+        // this.username = username;
+        // this.password = password;
 
         loginButton.onClick.AddListener(OnLoginCLicked);
 

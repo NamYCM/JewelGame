@@ -14,15 +14,14 @@ public class UIItemController : MonoBehaviour
             var userItem = Instantiate(_userItemPrefab, _userItemsArea).GetComponent<UIUserItem>();
             userItem.SetItemData(new UIShopWindow.ShopItem(){
                 SpecialType = item.Key,
-                //TODO move all icon into resources folder and use Resources.Load instead
-                Icon = AssetDatabase.LoadAssetAtPath<Sprite>(item.Value.IconPath)
+                Icon = Resources.Load<Sprite>(item.Value.IconPath)
             });
-            userItem.UpdateAmount();
+            userItem.Init();
 
-            var buttonItem = userItem.GetComponentInChildren<CustomButton>();
-            buttonItem.OnDown.AddListener(() => {
-                GameManager.Instance.InputPlayController.ChooseSkill(userItem);
-            });
+            // var buttonItem = userItem.GetComponentInChildren<CustomButton>();
+            // buttonItem.OnDown.AddListener(() => {
+            //     GameManager.Instance.InputPlayController.ChooseSkill(userItem);
+            // });
         }
     }
 

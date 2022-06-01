@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using Michsky.UI.ModernUIPack;
 using UnityEngine;
@@ -9,26 +7,30 @@ using UnityEngine.SceneManagement;
 
 public class UILoader : SingletonMono<UILoader>
 {
-    [Serializable]
-    public class Condition : SerializableCallback<bool> {}
-    public Condition condition;
+    // [Serializable]
+    // public class Condition : SerializableCallback<bool> {}
+    // public Condition condition;
     public UnityEvent OnEndLoading = null;
 
     ProgressBar _progress;
     UIAnimateCompoment _uiAnimation;
 
     float _currentPercent = 0;
-    bool _isFull = false;
+    bool _isFull = false, _isLoading = false;
     float _maxSpeed = 250f;
     string _targetScene;
+    bool _canLoad = true;
+    // bool _isCloseImediately = true;
+
+    public bool CanLoad
+    {
+        get { return _canLoad; }
+        set { _canLoad = value; }
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        // condition.SetMethod(this, "Test2", true, null);
-        // condition.SetMethod(this, "Test", true, null);
-        Debug.Log(condition.Invoke());
-
         _uiAnimation = GetComponentInChildren<UIAnimateCompoment>(true);
         _progress = GetComponentInChildren<ProgressBar>(true);
         _progress.currentPercent = 0;
@@ -40,20 +42,8 @@ public class UILoader : SingletonMono<UILoader>
             Reset();
             OnEndLoading?.Invoke();
         });
-        // CanLoad();
+
         DontDestroyOnLoad(gameObject);
-
-    }
-
-    public bool Test ()
-    {
-        Debug.Log("1");
-        return true;
-    }
-    public bool Test2 ()
-    {
-        Debug.Log("2");
-        return false;
     }
 
     private async void LoadScene ()
@@ -68,19 +58,21 @@ public class UILoader : SingletonMono<UILoader>
 
         _currentPercent = loadAsync.progress;
 
-        while (!_isFull)
+        while (!_isFull || !_canLoad)
         {
-            //wait for full loader
+            //wait for full loader and sacrify all the condition to load
             await Task.Delay(100);
         }
 
         loadAsync.allowSceneActivation = true;
 
-        _uiAnimation.Disable();
+        // if (_isCloseImediately) Close();
     }
 
     void Reset ()
     {
+        // _isCloseImediately = true;
+        _canLoad = true;
         _isFull = false;
         _currentPercent = 0;
         _progress.currentPercent = 0;
@@ -88,8 +80,17 @@ public class UILoader : SingletonMono<UILoader>
 
     public void LoadScene (string sceneName)
     {
+        _isLoading = true;
+        // _isCloseImediately = isCloseAfterLoad;
         _targetScene = sceneName;
         _uiAnimation.Show();
+    }
+
+    public void Close ()
+    {
+        if (!_isLoading) return;
+        _isLoading = false;
+        _uiAnimation.Disable();
     }
 
     private void Update() {

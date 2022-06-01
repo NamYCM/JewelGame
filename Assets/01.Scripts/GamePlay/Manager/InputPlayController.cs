@@ -6,6 +6,7 @@ public class InputPlayController : MonoBehaviour
 {
     PlayerInput inputActions;
     GamePiece pressPiece, enterPiece;
+    UIUserItem _selectedItem = null;
 
     bool isEnable = true;
 
@@ -65,6 +66,8 @@ public class InputPlayController : MonoBehaviour
             //if user clicked the item...
             if (_selectedItem && !enterPiece.IsSpecialPiece())
             {
+                if (Data.GetAmountOfSpecialPiece(_selectedItem.SpecialType) == 0) return;
+
                 //upgrade the piece
                 enterPiece.UpgradeSkill(_selectedItem.SpecialType);
 
@@ -114,21 +117,21 @@ public class InputPlayController : MonoBehaviour
             throw new System.Exception("the platform is not valid");
         #endif
 
-        inputActions.GamePlay.MouseRightClick.started += OnRightClick;
+        // inputActions.GamePlay.MouseRightClick.started += OnRightClick;
         inputActions.Enable();
     }
 
-    void OnRightClick (InputAction.CallbackContext context)
-    {
-        if (!IsEnable()) return;
+    // void OnRightClick (InputAction.CallbackContext context)
+    // {
+    //     if (!IsEnable()) return;
 
-        //set first piece
-        pressPiece = GetPiece();
-        if (pressPiece && !pressPiece.IsSpecialPiece())
-        {
-            pressPiece.UpgradeSkill(PieceType.COLUMN_CLEAR);
-        }
-    }
+    //     //set first piece
+    //     pressPiece = GetPiece();
+    //     if (pressPiece && !pressPiece.IsSpecialPiece())
+    //     {
+    //         pressPiece.UpgradeSkill(PieceType.COLUMN_CLEAR);
+    //     }
+    // }
 
     public void DisableInput()
     {
@@ -140,7 +143,6 @@ public class InputPlayController : MonoBehaviour
         isEnable = true;
     }
 
-    UIUserItem _selectedItem = null;
     private void ResetSeletedItem ()
     {
         _selectedItem = null;
@@ -150,4 +152,11 @@ public class InputPlayController : MonoBehaviour
     {
         _selectedItem = item;
     }
+
+    // private void Update() {
+    //     if (!_selectedItem)
+    //     {
+
+    //     }
+    // }
 }
