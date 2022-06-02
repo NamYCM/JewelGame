@@ -4,9 +4,22 @@ using System.Collections.Generic;
 using Newtonsoft.Json;
 using UnityEngine;
 using UnityEngine.Networking;
+#if UNITY_WEBGL
+using Newtonsoft.Json.Utilities;
+#endif
 
 public static class APIAccesser
 {
+    static APIAccesser ()
+    {
+#if UNITY_WEBGL
+        AotHelper.EnsureList<GridPlay.PiecePosition>();
+        AotHelper.EnsureList<BuildingMap.ConnectColumn>();
+        AotHelper.EnsureList<BuildingMap.ConnectData>();
+        AotHelper.EnsureList<BuildingMap.GridData>();
+#endif
+    }
+
 #region  LoginAPIs
     /// <summary>Sign in</summary>
     public static IEnumerator LoginCoroutine(DataUser user, Action<DataUser> onSuccessfulSignIn, Action<string> onFailedSignIn)
@@ -381,10 +394,12 @@ public static class APIAccesser
         using (UnityWebRequest www = UnityWebRequest.Get(UrlUtility.GET_ALL_MAP_URL))
         {
             www.SetRequestHeader("Authorization", Data.GetBearer());
+
             yield return www.SendWebRequest();
 
             if (www.isNetworkError)
             {
+                Debug.LogError("something wrong in send www request \n" + www.error);
                 throw new Exception("something wrong in send www request \n" + www.error);
             }
             else
@@ -394,7 +409,7 @@ public static class APIAccesser
                 if (www.responseCode == 200)
                 {
                     LevelData levelData = JsonConvert.DeserializeObject<LevelData>(body);
-                    Debug.Log("update succesful");
+                    Debug.Log("get all map succesful");
                     onSucessfulGet?.Invoke(levelData);
                 }
                 else

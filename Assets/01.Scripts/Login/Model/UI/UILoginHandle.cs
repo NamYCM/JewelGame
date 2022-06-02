@@ -2,6 +2,7 @@
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+// using Newtonsoft.Json.Utilities;
 
 public class UILoginHandle : MonoBehaviour
 {
@@ -41,23 +42,31 @@ public class UILoginHandle : MonoBehaviour
             Data.InitUserData(userData);
             Data.SetToken(userData.token);
 
-            loginController.ModelWindow.SetTitle("load map data");
-            Data.InitLevelData(() => {
-                Debug.Log("can load to level select");
-                UILoader.Instance.CanLoad = true;
+            // loginController.ModelWindow.SetTitle("load map data");
+            try
+            {
+                Data.InitLevelData(() => {
+                    Debug.Log("can load to level select " + Data.MaxLevel());
+                    UILoader.Instance.CanLoad = true;
 
-                // loginController.ModelWindow.OnEndCloseAction(() => {
-                //     UILoader.Instance.LoadScene("LevelSelect");
-                // });
-                // loginController.ModelWindow.Close();
-            }, (message) => {
-                // loginController.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("error").SetMessage(message).Show();
-                UILoader.Instance.CanLoad = true;
-                Debug.LogError("load level data failed: \n" + message);
-            });
+                    // loginController.ModelWindow.OnEndCloseAction(() => {
+                    //     UILoader.Instance.LoadScene("LevelSelect");
+                    // });
+                    // loginController.ModelWindow.Close();
+                }, (message) => {
+                    // loginController.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("error").SetMessage(message).Show();
+                    UILoader.Instance.CanLoad = true;
+                    Debug.LogError("load level data failed: \n" + message);
+                });
+            }
+            catch (System.Exception ex)
+            {
+                Debug.LogError(ex);
+            }
 
             // UILoader.Instance.condition.methodName = Test;
             loginController.ModelWindow.OnEndCloseAction(() => {
+                Debug.Log("start load to new scene");
                 UILoader.Instance.CanLoad = false;
                 UILoader.Instance.LoadScene("LevelSelect");
             });

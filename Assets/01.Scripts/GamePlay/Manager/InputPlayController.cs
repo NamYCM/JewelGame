@@ -107,7 +107,10 @@ public class InputPlayController : MonoBehaviour
     public void Init() {
         inputActions = new PlayerInput();
 
-        #if UNITY_STANDALONE_WIN
+        if (!inputActions.GamePlay.enabled)
+            inputActions.Enable();
+
+        #if (UNITY_STANDALONE_WIN || UNITY_WEBGL)
             inputActions.GamePlay.MouseLeftClick.started += OnStarted;
             inputActions.GamePlay.MouseLeftClick.canceled += OnCanceled;
         #elif (UNITY_IOS || UNITY_ANDROID)
@@ -118,7 +121,7 @@ public class InputPlayController : MonoBehaviour
         #endif
 
         // inputActions.GamePlay.MouseRightClick.started += OnRightClick;
-        inputActions.Enable();
+        // inputActions.Enable();
     }
 
     // void OnRightClick (InputAction.CallbackContext context)

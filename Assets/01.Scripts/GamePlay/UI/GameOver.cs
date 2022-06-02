@@ -121,6 +121,7 @@ public class GameOver : MonoBehaviour
             Debug.LogError("update current level failed \n" + message);
             // GameManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("update current level failed").SetMessage(message).Show();
         }));
+        LoadGamePlayScene();
     }
 
     private void OnMenuClicked ()

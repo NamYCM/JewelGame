@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Threading.Tasks;
+using System.Collections;
 using Michsky.UI.ModernUIPack;
 using UnityEngine;
 using UnityEngine.Events;
@@ -35,7 +35,7 @@ public class UILoader : SingletonMono<UILoader>
         _progress = GetComponentInChildren<ProgressBar>(true);
         _progress.currentPercent = 0;
         _uiAnimation.OnCompleteActionEnable.AddListener(() => {
-            LoadScene();
+            StartCoroutine(LoadScene());
         });
 
         _uiAnimation.OnCompleteActionDisable.AddListener(() => {
@@ -46,27 +46,45 @@ public class UILoader : SingletonMono<UILoader>
         DontDestroyOnLoad(gameObject);
     }
 
-    private async void LoadScene ()
+    private IEnumerator LoadScene ()
     {
-        var loadAsync = SceneManager.LoadSceneAsync(_targetScene);
-        loadAsync.allowSceneActivation = false;
-
-        do
-        {
-            _currentPercent = loadAsync.progress;
-        } while (loadAsync.progress < 0.9f);
-
-        _currentPercent = loadAsync.progress;
+#if UNITY_WEBGL
+        //because the webGl platform alway be 0 when use load scene async
+        _currentPercent = 0.9f;
 
         while (!_isFull || !_canLoad)
         {
             //wait for full loader and sacrify all the condition to load
-            await Task.Delay(100);
+            yield return new WaitForSeconds(0.1f);
         }
 
+        SceneManager.LoadScene(_targetScene);
+#else
+        // Debug.Log("into load");
+        var loadAsync = SceneManager.LoadSceneAsync(_targetScene);
+        loadAsync.allowSceneActivation = false;
+        // Debug.Log("start load");
+        do
+        {
+            // Debug.Log("loading");
+            _currentPercent = loadAsync.progress;
+        } while (loadAsync.progress < 0.9f);
+
+        _currentPercent = loadAsync.progress;
+        // _currentPercent = 0.9f;
+
+        while (!_isFull || !_canLoad)
+        {
+            // Debug.Log("wait for condition");
+            //wait for full loader and sacrify all the condition to load
+            yield return new WaitForSeconds(0.1f);
+        }
+        // Debug.Log("loaded");
+        // SceneManager.LoadScene(_targetScene);
         loadAsync.allowSceneActivation = true;
 
         // if (_isCloseImediately) Close();
+#endif
     }
 
     void Reset ()

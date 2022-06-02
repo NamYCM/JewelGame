@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: dfa0cf5d4bfa4414e992eea06a311fc2, type: 2}
-  webglMode: 0
+  webglMode: 1
   images:
   - {fileID: 1738654359648538}
   - {fileID: 1066192231538926}
@@ -1465,7 +1465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: dfa0cf5d4bfa4414e992eea06a311fc2, type: 2}
-  webglMode: 0
+  webglMode: 1
   images:
   - {fileID: 7221704594803642633}
   - {fileID: 172979088007613004}
@@ -2044,7 +2044,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: dfa0cf5d4bfa4414e992eea06a311fc2, type: 2}
-  webglMode: 0
+  webglMode: 1
   images:
   - {fileID: 9079107917861691989}
   - {fileID: 2396603821127995399}
@@ -5783,7 +5783,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   UIManagerAsset: {fileID: 11400000, guid: dfa0cf5d4bfa4414e992eea06a311fc2, type: 2}
-  webglMode: 0
+  webglMode: 1
   images:
   - {fileID: 6588953274477048263}
   - {fileID: 7138071911954911494}

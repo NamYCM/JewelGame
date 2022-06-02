@@ -11,6 +11,9 @@ namespace Michsky.UI.ModernUIPack
 
         void OnEnable()
         {
+#if (UNITY_IOS || UNITY_ANDROID)
+            enableMobileMode = true;
+#endif
             if (buttonAnimator == null)
                 buttonAnimator = gameObject.GetComponent<Animator>();
         }
