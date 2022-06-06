@@ -20,9 +20,9 @@ namespace Michsky.UI.ModernUIPack
 
         void Awake()
         {
-#if UNITY_WEBGL
-            webglMode = true;
-#endif
+// #if UNITY_WEBGL
+//             webglMode = true;
+// #endif
             if (Application.isPlaying && webglMode == true)
                 return;
 
