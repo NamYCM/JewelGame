@@ -43,7 +43,7 @@ public class GameManager : SingleSubject<GameManager>
     private void Awake() {
         CurrentState = GameState.Loading;
 
-        map = Data.GetMapInfor(Data.GetCurrentLevel());
+        // map = Data.GetMapInfor(Data.GetCurrentLevel());
 
         gridCreater = GetComponentInChildren<GridCreater>();
         levelCreater = GetComponentInChildren<LevelCreater>();
@@ -64,11 +64,18 @@ public class GameManager : SingleSubject<GameManager>
     private void Start() {
         //TODO caculate the cell of grids
         PiecePool.Instance.InitReadyPiece(30);
-
-        UILoader.Instance.OnEndLoading.AddListener(() => {
+        
+        if (UILoader.IsEnable)
+        {
+            UILoader.Instance.OnEndLoading.AddListener(() => {
+                StartCoroutine(StartGame(0.25f));
+            });
+            UILoader.Instance.Close();
+        }
+        else
+        {
             StartCoroutine(StartGame(0.25f));
-        });
-        UILoader.Instance.Close();
+        }
 
         CurrentState = GameState.Filling;
 

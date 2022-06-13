@@ -10,7 +10,7 @@ public class UILoader : SingletonMono<UILoader>
     // [Serializable]
     // public class Condition : SerializableCallback<bool> {}
     // public Condition condition;
-    public UnityEvent OnEndLoading = null;
+    public UnityEvent OnEndLoading;
 
     ProgressBar _progress;
     UIAnimateCompoment _uiAnimation;

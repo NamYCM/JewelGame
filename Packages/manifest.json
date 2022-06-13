@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "com.github.siccity.serializablecallback": "https://github.com/Siccity/SerializableCallback.git",
     "com.unity.2d.animation": "3.2.5",
     "com.unity.2d.pixel-perfect": "2.0.4",
     "com.unity.2d.psdimporter": "2.1.6",

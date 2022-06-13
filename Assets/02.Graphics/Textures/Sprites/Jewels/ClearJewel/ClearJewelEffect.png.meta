@@ -1,0 +1,1760 @@
+fileFormatVersion: 2
+guid: 36e85b72d8d0cb745af13e13e5bc71ff
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3263421438415477454
+    second: ClearJewelEffect_0
+  - first:
+      213: 8471211879681803832
+    second: ClearJewelEffect_1
+  - first:
+      213: 654450354401271917
+    second: ClearJewelEffect_2
+  - first:
+      213: -7193009442679347627
+    second: ClearJewelEffect_3
+  - first:
+      213: -4876924377417791565
+    second: ClearJewelEffect_4
+  - first:
+      213: -7073517638572286359
+    second: ClearJewelEffect_5
+  - first:
+      213: -1745531940548146487
+    second: ClearJewelEffect_6
+  - first:
+      213: -8933726194084680585
+    second: ClearJewelEffect_7
+  - first:
+      213: -5849612621789839296
+    second: ClearJewelEffect_8
+  - first:
+      213: 5706402906589182581
+    second: ClearJewelEffect_9
+  - first:
+      213: 422871159913963212
+    second: ClearJewelEffect_10
+  - first:
+      213: -1133982398626279675
+    second: ClearJewelEffect_11
+  - first:
+      213: -1886880535999565189
+    second: ClearJewelEffect_12
+  - first:
+      213: 1758490595155210797
+    second: ClearJewelEffect_13
+  - first:
+      213: 1749080886716930915
+    second: ClearJewelEffect_14
+  - first:
+      213: -826551941357927641
+    second: ClearJewelEffect_15
+  - first:
+      213: -8864512438214025547
+    second: ClearJewelEffect_16
+  - first:
+      213: 6973825715195515661
+    second: ClearJewelEffect_17
+  - first:
+      213: 4937904811680518228
+    second: ClearJewelEffect_18
+  - first:
+      213: -8509610639442544533
+    second: ClearJewelEffect_19
+  - first:
+      213: 7249226097214466360
+    second: ClearJewelEffect_20
+  - first:
+      213: -6809467200171857530
+    second: ClearJewelEffect_21
+  - first:
+      213: -2549440396494482390
+    second: ClearJewelEffect_22
+  - first:
+      213: 2177105159580485064
+    second: ClearJewelEffect_23
+  - first:
+      213: -1142638140454385971
+    second: ClearJewelEffect_24
+  - first:
+      213: -667425170878268930
+    second: ClearJewelEffect_25
+  - first:
+      213: 4387160066139678970
+    second: ClearJewelEffect_26
+  - first:
+      213: 478265963770641642
+    second: ClearJewelEffect_27
+  - first:
+      213: -5995042456847109982
+    second: ClearJewelEffect_28
+  - first:
+      213: 7980908819286504938
+    second: ClearJewelEffect_29
+  - first:
+      213: -8299298001116057368
+    second: ClearJewelEffect_30
+  - first:
+      213: 8923378597814454718
+    second: ClearJewelEffect_31
+  - first:
+      213: 2325889609968639340
+    second: ClearJewelEffect_32
+  - first:
+      213: 2709171476441064526
+    second: ClearJewelEffect_33
+  - first:
+      213: -3466960528706679900
+    second: ClearJewelEffect_34
+  - first:
+      213: -4557058461540135954
+    second: ClearJewelEffect_35
+  - first:
+      213: -5576924407357702599
+    second: ClearJewelEffect_36
+  - first:
+      213: 1436391709151423486
+    second: ClearJewelEffect_37
+  - first:
+      213: -5111489628711789248
+    second: ClearJewelEffect_38
+  - first:
+      213: -3226554365239251850
+    second: ClearJewelEffect_39
+  - first:
+      213: -8227899030975603010
+    second: ClearJewelEffect_40
+  - first:
+      213: -1998801637651642420
+    second: ClearJewelEffect_41
+  - first:
+      213: -8828123623023946485
+    second: ClearJewelEffect_42
+  - first:
+      213: -1797763674505480081
+    second: ClearJewelEffect_43
+  - first:
+      213: -1916085553478654312
+    second: ClearJewelEffect_44
+  - first:
+      213: 2931915875341992789
+    second: ClearJewelEffect_45
+  - first:
+      213: 179285087339105546
+    second: ClearJewelEffect_46
+  - first:
+      213: 8844781212517282539
+    second: ClearJewelEffect_47
+  - first:
+      213: 5156583819936230231
+    second: ClearJewelEffect_48
+  - first:
+      213: -1330539024047780816
+    second: ClearJewelEffect_49
+  - first:
+      213: -71751855102857587
+    second: ClearJewelEffect_50
+  - first:
+      213: 4923837106820159168
+    second: ClearJewelEffect_51
+  - first:
+      213: -7739990519144977405
+    second: ClearJewelEffect_52
+  - first:
+      213: -1648397009322966810
+    second: ClearJewelEffect_53
+  - first:
+      213: 8391861523108808787
+    second: ClearJewelEffect_54
+  - first:
+      213: -3265553781261032521
+    second: ClearJewelEffect_55
+  - first:
+      213: 1731135148052754253
+    second: ClearJewelEffect_56
+  - first:
+      213: 7253924141775048891
+    second: ClearJewelEffect_57
+  - first:
+      213: 7712217078289887086
+    second: ClearJewelEffect_58
+  - first:
+      213: -3308244579964943178
+    second: ClearJewelEffect_59
+  - first:
+      213: -1252746754554736985
+    second: ClearJewelEffect_60
+  - first:
+      213: -4570392329586673269
+    second: ClearJewelEffect_61
+  - first:
+      213: -6760104508163573341
+    second: ClearJewelEffect_62
+  - first:
+      213: -6814071780232586577
+    second: ClearJewelEffect_63
+  - first:
+      213: -7363481886410629795
+    second: ClearJewelEffect_64
+  - first:
+      213: 7573415515311017206
+    second: ClearJewelEffect_65
+  - first:
+      213: 1899718960605639446
+    second: ClearJewelEffect_66
+  - first:
+      213: 1739166860865193918
+    second: ClearJewelEffect_67
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ClearJewelEffect_0
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1311
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eca162502800a4d20800000000000000
+      internalID: 3263421438415477454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_1
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1304
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 836c089725acf8570800000000000000
+      internalID: 8471211879681803832
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_2
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1304
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6067314123151900800000000000000
+      internalID: 654450354401271917
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_3
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1304
+        width: 90
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5562117a50c4d2c90800000000000000
+      internalID: -7193009442679347627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_4
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1293
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b7c1972e1fa15cb0800000000000000
+      internalID: -4876924377417791565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1195
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96e50705f21d5dd90800000000000000
+      internalID: -7073517638572286359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_6
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 1195
+        width: 105
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ca8783c2ff96c7e0800000000000000
+      internalID: -1745531940548146487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_7
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 1197
+        width: 103
+        height: 95
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 77ceaf00c57050480800000000000000
+      internalID: -8933726194084680585
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_8
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 1113
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0404394205002dea0800000000000000
+      internalID: -5849612621789839296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_9
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 1106
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57a3180b537313f40800000000000000
+      internalID: 5706402906589182581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_10
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 1106
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccedd6854175ed500800000000000000
+      internalID: 422871159913963212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_11
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 1106
+        width: 90
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 50fc55c34094340f0800000000000000
+      internalID: -1133982398626279675
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_12
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1095
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b72b52e462470d5e0800000000000000
+      internalID: -1886880535999565189
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 997
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d22771121e9676810800000000000000
+      internalID: 1758490595155210797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_14
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 997
+        width: 105
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36b1038accbf54810800000000000000
+      internalID: 1749080886716930915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_15
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 993
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72383fa736f7784f0800000000000000
+      internalID: -826551941357927641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_16
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 1038
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5be983557eceaf480800000000000000
+      internalID: -8864512438214025547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_17
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 991
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0396bff98108c060800000000000000
+      internalID: 6973825715195515661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_18
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 915
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 450d8ea9346f68440800000000000000
+      internalID: 4937904811680518228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_19
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 908
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b687423953ac7e980800000000000000
+      internalID: -8509610639442544533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_20
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 908
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 839a5f43abc6a9460800000000000000
+      internalID: 7249226097214466360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_21
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 908
+        width: 90
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6892518d8a9ef71a0800000000000000
+      internalID: -6809467200171857530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_22
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 897
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a245ae687719e9cd0800000000000000
+      internalID: -2549440396494482390
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_23
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 799
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c5077b9b91a63e10800000000000000
+      internalID: 2177105159580485064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_24
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 799
+        width: 105
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc6476b4aa88420f0800000000000000
+      internalID: -1142638140454385971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_25
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 795
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef975afd754dcb6f0800000000000000
+      internalID: -667425170878268930
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_26
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 840
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af8e80306d252ec30800000000000000
+      internalID: 4387160066139678970
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_27
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 793
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aec75be2c5423a600800000000000000
+      internalID: 478265963770641642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_28
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 717
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a03e3a06a45dcca0800000000000000
+      internalID: -5995042456847109982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_29
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 710
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae5ba565942e1ce60800000000000000
+      internalID: 7980908819286504938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_30
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 710
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e03e568078f2dc80800000000000000
+      internalID: -8299298001116057368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_31
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 710
+        width: 90
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb9cd0f7e8536db70800000000000000
+      internalID: 8923378597814454718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_32
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 699
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6dd3f4f648374020800000000000000
+      internalID: 2325889609968639340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 601
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e44e3e0aa19e89520800000000000000
+      internalID: 2709171476441064526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_34
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 601
+        width: 105
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab432494c1e2efc0800000000000000
+      internalID: -3466960528706679900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_35
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 597
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eeb463b397312c0c0800000000000000
+      internalID: -4557058461540135954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_36
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 642
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93efc30acc8ca92b0800000000000000
+      internalID: -5576924407357702599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_37
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 595
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efb694e26a61fe310800000000000000
+      internalID: 1436391709151423486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_38
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 519
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04d5a87b3475019b0800000000000000
+      internalID: -5111489628711789248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_39
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 512
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67cad6b56e9f833d0800000000000000
+      internalID: -3226554365239251850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_40
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 512
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebe1be2bc61a0dd80800000000000000
+      internalID: -8227899030975603010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_41
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 512
+        width: 90
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc70e4b2084d244e0800000000000000
+      internalID: -1998801637651642420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_42
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 501
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b055c6896543c7580800000000000000
+      internalID: -8828123623023946485
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_43
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 403
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f68fff6867f0d07e0800000000000000
+      internalID: -1797763674505480081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_44
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 403
+        width: 105
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 896a5a94752b865e0800000000000000
+      internalID: -1916085553478654312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_45
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 399
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 553861564f140b820800000000000000
+      internalID: 2931915875341992789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_46
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 444
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0d4f5846d2fc7200800000000000000
+      internalID: 179285087339105546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_47
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 397
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be23420b6a9feba70800000000000000
+      internalID: 8844781212517282539
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_48
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 321
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 75b63d9d9addf8740800000000000000
+      internalID: 5156583819936230231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_49
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 314
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03c46df9ec9f88de0800000000000000
+      internalID: -1330539024047780816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_50
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 314
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8e6e946116110ff0800000000000000
+      internalID: -71751855102857587
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_51
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 314
+        width: 90
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c617e3d2cbf45440800000000000000
+      internalID: 4923837106820159168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_52
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 303
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30ce87d81a7069490800000000000000
+      internalID: -7739990519144977405
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_53
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 205
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6e00d7257a7bf19e0800000000000000
+      internalID: -1648397009322966810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_54
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 205
+        width: 105
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3584b21e791e57470800000000000000
+      internalID: 8391861523108808787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_55
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 201
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7b3a009332c6ea2d0800000000000000
+      internalID: -3265553781261032521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_56
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 246
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4fa0e5ce3a360810800000000000000
+      internalID: 1731135148052754253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_57
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 199
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb0d122f29d1ba460800000000000000
+      internalID: 7253924141775048891
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_58
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 123
+        width: 60
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6f6b26529c470b60800000000000000
+      internalID: 7712217078289887086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_59
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 116
+        width: 76
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b404151511c612d0800000000000000
+      internalID: -3308244579964943178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_60
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 116
+        width: 84
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aecd3dc6795d9ee0800000000000000
+      internalID: -1252746754554736985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_61
+      rect:
+        serializedVersion: 2
+        x: 275
+        y: 116
+        width: 90
+        height: 74
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b89f0d62464b290c0800000000000000
+      internalID: -4570392329586673269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_62
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 105
+        width: 106
+        height: 93
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a9b46234c84f22a0800000000000000
+      internalID: -6760104508163573341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 7
+        width: 111
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faa193181dd8f61a0800000000000000
+      internalID: -6814071780232586577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_64
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 7
+        width: 105
+        height: 99
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5d987adc38afc990800000000000000
+      internalID: -7363481886410629795
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_65
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 3
+        width: 112
+        height: 102
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6fc8b86194d2a1960800000000000000
+      internalID: 7573415515311017206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_66
+      rect:
+        serializedVersion: 2
+        x: 370
+        y: 48
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61339fb54582d5a10800000000000000
+      internalID: 1899718960605639446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ClearJewelEffect_67
+      rect:
+        serializedVersion: 2
+        x: 332
+        y: 1
+        width: 5
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb74003ab03c22810800000000000000
+      internalID: 1739166860865193918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
