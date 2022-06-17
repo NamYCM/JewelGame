@@ -43,7 +43,7 @@ public class GameManager : SingleSubject<GameManager>
     private void Awake() {
         CurrentState = GameState.Loading;
 
-        // map = Data.GetMapInfor(Data.GetCurrentLevel());
+        map = Data.GetMapInfor(Data.GetCurrentLevel());
 
         gridCreater = GetComponentInChildren<GridCreater>();
         levelCreater = GetComponentInChildren<LevelCreater>();

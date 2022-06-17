@@ -60,30 +60,22 @@ public class UILoader : SingletonMono<UILoader>
 
         SceneManager.LoadScene(_targetScene);
 #else
-        // Debug.Log("into load");
         var loadAsync = SceneManager.LoadSceneAsync(_targetScene);
         loadAsync.allowSceneActivation = false;
-        // Debug.Log("start load");
         do
         {
-            // Debug.Log("loading");
             _currentPercent = loadAsync.progress;
         } while (loadAsync.progress < 0.9f);
 
         _currentPercent = loadAsync.progress;
-        // _currentPercent = 0.9f;
 
         while (!_isFull || !_canLoad)
         {
-            // Debug.Log("wait for condition");
             //wait for full loader and sacrify all the condition to load
             yield return new WaitForSeconds(0.1f);
         }
-        // Debug.Log("loaded");
-        // SceneManager.LoadScene(_targetScene);
         loadAsync.allowSceneActivation = true;
 
-        // if (_isCloseImediately) Close();
 #endif
     }
 

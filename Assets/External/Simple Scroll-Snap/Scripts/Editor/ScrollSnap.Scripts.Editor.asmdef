@@ -1,0 +1,17 @@
+{
+    "name": "ScrollSnap.Scripts.Editor",
+    "references": [
+        "GUID:3bb0266be25a09d43bf6e7ce817e2590"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

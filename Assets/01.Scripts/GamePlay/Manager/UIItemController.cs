@@ -28,7 +28,7 @@ public class UIItemController : MonoBehaviour
         }
         catch (System.Exception ex)
         {
-            Debug.LogWarning("data didn't init already");
+            Debug.LogWarning("data didn't init already\n" + ex);
         }
     }
 
