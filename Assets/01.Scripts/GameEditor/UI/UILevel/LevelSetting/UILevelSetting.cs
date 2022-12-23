@@ -26,8 +26,8 @@ public abstract class UILevelSetting : MonoBehaviour
 
     public virtual void SetLevelData (BuildingMap mapData)
     {
-        Star1Score = mapData.StarScore.Star1Score;
-        Star2Score = mapData.StarScore.Star2Score;
-        Star3Score = mapData.StarScore.Star3Score;
+        Star1Score = mapData.StarScore.star1Score;
+        Star2Score = mapData.StarScore.star2Score;
+        Star3Score = mapData.StarScore.star3Score;
     }
 }

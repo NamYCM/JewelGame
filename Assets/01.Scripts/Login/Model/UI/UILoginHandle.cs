@@ -47,6 +47,7 @@ public class UILoginHandle : MonoBehaviour
             {
                 Data.InitLevelData(() => {
                     Debug.Log("can load to level select " + Data.MaxLevel());
+                    Data.SetVersionBearer(Data.GetLevelVersion());
                     UILoader.Instance.CanLoad = true;
 
                     // loginController.ModelWindow.OnEndCloseAction(() => {

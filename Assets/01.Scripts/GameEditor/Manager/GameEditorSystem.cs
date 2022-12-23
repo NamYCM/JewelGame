@@ -1,8 +1,12 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class GameEditorSystem : MonoBehaviour
 {
     public static GameEditorSystem Instance;
+    
+    [SerializeField] Button _deleteMapButton;
+ 
     GridDisplayCreator gridDisplayCreator;
     UIEditorController uiEditor;
     InputController inputController;
@@ -19,6 +23,8 @@ public class GameEditorSystem : MonoBehaviour
     public UIEditorController UIEditor => uiEditor;
     public FileManager FileManager => fileManager;
     public GridDisplayCreator GridDisplayCreator => gridDisplayCreator;
+
+    string email, password, verifyPassword, code;
 
     // Start is called before the first frame update
     void Awake()
@@ -47,6 +53,8 @@ public class GameEditorSystem : MonoBehaviour
             UILoader.Instance.Close();
             // uiEditor.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("Error").SetMessage(message).Show();
         });
+
+        DeactiveDeleteMapButton();
     }
 
     private bool ChangeCurrentGrid (GridDisplay targetGrid)
@@ -292,10 +300,8 @@ public class GameEditorSystem : MonoBehaviour
     {
         uiEditor.ModelWindow.StartBuild.SetTitle("Confirm").SetMessage("Are you sure to log out?").OnConfirmAction(() => {
             UILoader.Instance.LoadScene("LoginAdmin");
-        }).Show();
+        }).OnDeclineAction(() => {}).Show();
     }
-
-    string email, password, verifyPassword, code;
 
     void SignUpAdmin ()
     {
@@ -370,5 +376,64 @@ public class GameEditorSystem : MonoBehaviour
                 SignUpAdmin();
             });
         }).OnDeclineAction(() => {}).Show();
+    }
+
+    public void ActiveDeleteMapButton ()
+    {
+        _deleteMapButton.interactable = true;
+    }
+
+    public void DeactiveDeleteMapButton ()
+    {
+        _deleteMapButton.interactable = false;
+    }
+
+    public void DeleteMap ()
+    {
+        if (fileManager.Map == null)
+        {
+            // show error window
+        }
+        else
+        {
+            uiEditor.ModelWindow.StartBuild.SetMessage("Are you sure to delete this map?")
+            .OnDeclineAction(() => {})
+            .OnConfirmAction(() => {
+                if (!uint.TryParse(fileManager.Map.name, out uint levelNumber))
+                {
+                    uiEditor.ModelWindow.StartBuild.OnEndCloseAction(() => {
+                        uiEditor.ModelWindow.StartBuild.SetTitle("Error")
+                        .SetMessage($"level's name {fileManager.Map.name} is not valid").Show();
+                    });
+                    return;
+                }
+
+                //show deleting window after the current window closed
+                uiEditor.ModelWindow.StartBuild.OnEndCloseAction(() => {
+                    uiEditor.ModelWindow.StartBuild.SetTitle("Deleting").SetLoadingWindow(true).Show();
+                });
+
+                gridDisplayCreator.DeleteLevel(levelNumber, () => {
+                    //get new map data
+                    Data.InitLevelDataFromFirebase(() => {
+                        //close loading window
+                        ResetEditor();
+                        uiEditor.ModelWindow.Close();
+                    }, (err) => {
+                        //show error message
+                        uiEditor.ModelWindow.OnEndCloseAction(() => {
+                            uiEditor.ModelWindow.StartBuild.SetTitle("error").SetMessage(err).Show();
+                        });
+                        uiEditor.ModelWindow.Close();
+                    });
+                }, (err) => {
+                    //show error message
+                    uiEditor.ModelWindow.OnEndCloseAction(() => {
+                        uiEditor.ModelWindow.StartBuild.SetTitle("error").SetMessage(err).Show();
+                    });
+                    uiEditor.ModelWindow.Close();
+                });
+            }).Show();
+        }
     }
 }

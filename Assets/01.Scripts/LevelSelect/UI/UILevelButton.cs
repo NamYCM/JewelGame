@@ -54,11 +54,11 @@ public class UILevelButton : MonoBehaviour, IObserver
 
         var starScore = Data.GetMapInfor(level).StarScore;
 
-        if (currentScore < starScore.Star1Score)
+        if (currentScore < starScore.star1Score)
             return 0;
-        else if (currentScore < starScore.Star2Score)
+        else if (currentScore < starScore.star2Score)
             return 1;
-        else if (currentScore < starScore.Star3Score)
+        else if (currentScore < starScore.star3Score)
             return 2;
         else
             return 3;
@@ -86,19 +86,40 @@ public class UILevelButton : MonoBehaviour, IObserver
 
     private void OnButtonClicked ()
     {
-        // LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(true).SetTitle("Updating current level of user").Show();
         UILoader.Instance.CanLoad = false;
         UILoader.Instance.LoadScene("GamePlay");
         APIAccessObject.Instance.StartCoroutine(Data.UpdateCurrentLevel(level, () => {
+            Debug.Log("1");
             UILoader.Instance.CanLoad = true;
-            // LevelSelectManager.Instance.ModelWindow.StartBuild.OnEndCloseAction(() => {
-            //     UILoader.Instance.LoadScene("GamePlay");
-            // }).Close();
         }, (message) => {
-            UILoader.Instance.CanLoad = true;
+            UILoader.Instance.Close();
             Debug.LogError("update current level failed \n" + message);
-            // LevelSelectManager.Instance.ModelWindow.StartBuild.SetLoadingWindow(false).SetTitle("update current level failed").SetMessage(message).Show();
         }));
+
+        //check version
+        // APIAccessObject.Instance.StartCoroutine(LevelData.GetCurrentVersion((levelData) => {
+        //     if (levelData.version == Data.GetLevelVersion())
+        //     {
+        //         UILoader.Instance.CanLoad = false;
+        //         UILoader.Instance.LoadScene("GamePlay");
+        //         APIAccessObject.Instance.StartCoroutine(Data.UpdateCurrentLevel(level, () => {
+        //             UILoader.Instance.CanLoad = true;
+        //         }, (message) => {
+        //             UILoader.Instance.StopAllCoroutines();
+        //             Debug.LogError("update current level failed \n" + message);
+        //         }));
+        //     }
+        //     else
+        //     {
+        //         LevelSelectManager.Instance.ModelWindow.StartBuild.SetTitle("Notification").SetMessage("Data is obsoleted")
+        //         .OnConfirmAction(() => {
+        //             UILoader.Instance.LoadScene(0);
+        //         }).Show();
+        //     }
+        // }, (message) => {
+        //     Debug.LogError(message);
+        //     LevelSelectManager.Instance.ModelWindow.StartBuild.SetTitle("Error").SetMessage(message).Show();
+        // }));
     }
 
     private void SetTextLevel ()

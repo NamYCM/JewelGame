@@ -33,13 +33,13 @@ public class ConnectGridComponent : MonoBehaviour
     {
         foreach (var data in connectDatas)
         {
-            var grid = GameObject.Find(data.TargetGridName).GetComponent<GridPlay>();
-            if (grid == null) throw new System.NullReferenceException($"missing grid play in {data.TargetGridName}");
+            var grid = GameObject.Find(data.targetGridName).GetComponent<GridPlay>();
+            if (grid == null) throw new System.NullReferenceException($"missing grid play in {data.targetGridName}");
 
-            foreach (var item in data.ConnectColumns)
+            foreach (var item in data.connectColumns)
             {
                 if (!grid.Spawner)
-                    throw new System.NullReferenceException($"missing spawner in {data.TargetGridName}");
+                    throw new System.NullReferenceException($"missing spawner in {data.targetGridName}");
                 
                 grid.Spawner.SetConnectColumn(originGrid, item.originColumn, item.targetColumn);
 

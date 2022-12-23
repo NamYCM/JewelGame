@@ -9,49 +9,27 @@ public static class Data
     private static DataUser user;
     private static LevelData level;
     private static DataShop shop;
-    private static string token;
+    private static string _token;
+    private static int _version;
 
     static Data ()
     {
-        //load data
-        // if (data == null) LoadDataObject();
-
-        //to load select scene without login
-        // if (user == null)
-        // {
-        //     Debug.Log("1");
-        //     user = new DataUser("username", "password");
-        //     APIAccesser.LoginCoroutine(user, null, () => {
-        //         APIAccesser.SignUpCoroutine(user);
-        //         });
-        // }
-        // if (user == null) user = new DataUser("username", "password");
     }
 
-    // private static void CreateDataObject ()
-    // {
-    //     data = ScriptableObject.CreateInstance<DataObject>();
-    //     data.InitDataObject();
-    // }
-
-    // private static void LoadDataObject ()
-    // {
-    //     data = Resources.Load<DataObject>(FileUtility.GetDataPath());
-
-    //     if (data == null)
-    //     {
-    //         //does not exists data in project
-    //         //because the data object was deleted
-    //         CreateDataObject();
-    //     }
-    // }
-
-    public static void SetToken (string value)
+    public static void SetToken (string token)
     {
-        token = value;
+        _token = token;
     }
-    // public static string GetToken () => token;
-    public static string GetBearer () => "Bearer " + token;
+    public static void SetVersionBearer (int version)
+    {
+        _version = version;
+    }
+    public static string GetBearer () => "Bearer " + _token + " " + _version;
+
+    public static IEnumerator DeleteLevel (uint levelNumber, Action onSuccessful, Action<string> onFailed)
+    {
+        yield return APIAccesser.DeleteMapCoroutine(levelNumber, onSuccessful, onFailed);
+    }
 
     public static IEnumerator AddLevel (BuildingMap map, Action onSuccessfulGet, Action<string> onFailedGet)
     {
@@ -63,6 +41,11 @@ public static class Data
     {
         // data.AddLevel(map.Value);
         yield return APIAccesser.UpdateMapCoroutine(new KeyValuePair<int, MapLevelData>(map.Key, new MapLevelData(map.Value)), onSuccessful, onFailed);
+    }
+
+    public static int GetLevelVersion ()
+    {
+        return level.version;
     }
 
     public static int MaxLevel ()
@@ -93,20 +76,7 @@ public static class Data
         return level.maps[levelNumber].ConvertToBuildingMap();
         // return data.GetMapInfor(levelNumber);
     }
-
-    // public static IEnumerator UpdateScore (int level, int score, Action onSuccessfulUpdate, Action<string> onFailedUpdate)
-    // {
-    //     if (user.IsLock(level))
-    //         throw new System.NotSupportedException($"level {level} is locked, can not update score");
-
-    //     if (user.GetScore(level) > score)
-    //     {
-    //         onSuccessfulUpdate?.Invoke();
-    //         yield break;
-    //     }
-
-    //     yield return user.UpdateScore(level, score, onSuccessfulUpdate, onFailedUpdate);
-    // }
+    
     public static void UpdateScore (int level, int score, Action onSuccessfulUpdate, Action<string> onFailedUpdate)
     {
         if (user.IsLock(level))
@@ -232,18 +202,10 @@ public static class Data
     // public static IEnumerator InitLevelData (LevelData levelData, Action<LevelData> onSuccessfulInit, Action<string> onFailedInit)
     public static void InitLevelData (Action onSuccessfulInit, Action<string> onFailedInit)
     {
-        // yield return levelData.LoadData((data) => {
-        //     level = data;
-        //     onSuccessfulInit?.Invoke(data);
-        // }, onFailedInit);
         APIAccessObject.Instance.StartCoroutine(new LevelData().LoadData((data) => {
             level = data;
             onSuccessfulInit?.Invoke();
         }, onFailedInit));
-        // yield return new LevelData().LoadData((data) => {
-        //     level = data;
-        //     onSuccessfulInit?.Invoke();
-        // }, onFailedInit);
     }
 
     public static void InitLevelDataFromFirebase (Action onSuccessfulInit, Action<string> onFailedInit)

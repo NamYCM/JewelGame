@@ -34,7 +34,7 @@ public class UILevelTimerSetting : UILevelSetting
     {
         base.SetLevelData(mapData);
         
-        targetScore.text = ((BuildingTimeLevel)mapData).LevelData.TargetScore.ToString();
-        timeInSecond.text = ((BuildingTimeLevel)mapData).LevelData.TimeInSecond.ToString();
+        targetScore.text = ((BuildingTimeLevel)mapData).LevelData.targetScore.ToString();
+        timeInSecond.text = ((BuildingTimeLevel)mapData).LevelData.timeInSecond.ToString();
     }
 }

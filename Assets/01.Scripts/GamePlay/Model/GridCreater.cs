@@ -29,11 +29,11 @@ public class GridCreater : MonoBehaviour
             GridPlay tempGrid = Instantiate(gridPrefab, Vector3.zero, transform.rotation, transform).GetComponent<GridPlay>();
             BuildingMap.GridData data = gridsData[countGrid];
             
-            tempGrid.name = data.Name;
-            tempGrid.transform.position = data.Position;
-            tempGrid.transform.rotation = data.Rotation;
+            tempGrid.name = data.name;
+            tempGrid.transform.position = data.position;
+            tempGrid.transform.rotation = data.rotation;
 
-            tempGrid.GetComponent<Spawner>().SetLossFertilityColumnData(data.LossFertilityColumns);
+            tempGrid.GetComponent<Spawner>().SetLossFertilityColumnData(data.lossFertilityColumns);
             //set static for grid
             tempGrid.gameObject.isStatic = true;
 
@@ -49,15 +49,15 @@ public class GridCreater : MonoBehaviour
         foreach (var gridElement in gridsData)
         {
             // GridPlay currentGrid = GameObject.Find(name + "/" + gridElement.Name).GetComponent<GridPlay>();
-            GridPlay currentGrid = grids.Where(grid => grid.name == gridElement.Name).ToArray()[0];
+            GridPlay currentGrid = grids.Where(grid => grid.name == gridElement.name).ToArray()[0];
 
-            if (gridElement.TargetGrids.Count > 0)
+            if (gridElement.targetGrids.Count > 0)
             {
                 var connectGridComponent = currentGrid.gameObject.AddComponent<ConnectGridComponent>();
-                connectGridComponent.InitTargets(gridElement.TargetGrids);
+                connectGridComponent.InitTargets(gridElement.targetGrids);
             }
 
-            currentGrid.Init(gridElement.X, gridElement.Y, gridElement.InitialPieces);
+            currentGrid.Init(gridElement.x, gridElement.y, gridElement.initialPieces);
         }
     }
 }

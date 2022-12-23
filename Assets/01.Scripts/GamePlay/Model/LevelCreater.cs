@@ -11,15 +11,15 @@ public class LevelCreater : MonoBehaviour
 
     void GenerateLevel()
     {
-        switch (mapData.StarScore.LevelType)
+        switch (mapData.StarScore.levelType)
         {
             case LevelType.MOVES:
-                level = LevelMoves.New(gameObject).SetMoveAmount(((BuildingMoveMap)mapData).LevelData.MoveAmount)
-                    .SetTargetScore(((BuildingMoveMap)mapData).LevelData.TargetScore).Build();
+                level = LevelMoves.New(gameObject).SetMoveAmount(((BuildingMoveMap)mapData).LevelData.moveAmount)
+                    .SetTargetScore(((BuildingMoveMap)mapData).LevelData.targetScore).Build();
                 break;
             case LevelType.TIMER:
-                level = LevelTimer.New(gameObject).SetTime(((BuildingTimeLevel)mapData).LevelData.TimeInSecond)
-                    .SetTargetScore(((BuildingTimeLevel)mapData).LevelData.TargetScore).Build();
+                level = LevelTimer.New(gameObject).SetTime(((BuildingTimeLevel)mapData).LevelData.timeInSecond)
+                    .SetTargetScore(((BuildingTimeLevel)mapData).LevelData.targetScore).Build();
                 break;
             case LevelType.OBSTACLE:
                 return;
@@ -30,9 +30,9 @@ public class LevelCreater : MonoBehaviour
                 // break;
         }
 
-        level = Level.StartBuild(level).SetScore1Star(mapData.StarScore.Star1Score)
-                                        .SetScore2Star(mapData.StarScore.Star2Score)
-                                        .SetScore3Star(mapData.StarScore.Star3Score).Build();
+        level = Level.StartBuild(level).SetScore1Star(mapData.StarScore.star1Score)
+                                        .SetScore2Star(mapData.StarScore.star2Score)
+                                        .SetScore3Star(mapData.StarScore.star3Score).Build();
     }
 
     public void InitLevel (BuildingMap map)

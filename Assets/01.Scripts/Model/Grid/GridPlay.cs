@@ -344,14 +344,20 @@ public class GridPlay : Grid
         }
         else
         {
-            // _pieces[piece1.X, piece1.Y] = piece1;
-            // _pieces[piece2.X, piece2.Y] = piece2;
-
+            _pieces[piece1.X, piece1.Y] = piece1;
+            _pieces[piece2.X, piece2.Y] = piece2;
             int piece1X = piece1.X;
             int piece1Y = piece1.Y;
 
             piece1.MovableComponent.Swap(piece2.X, piece2.Y);
-            piece2.MovableComponent.Swap(piece1X, piece1Y);
+            piece2.MovableComponent.Swap(piece1X, piece1Y, () => {
+                int tempPiece1X = piece1.X;
+                int tempPiece1Y = piece1.Y;
+
+                piece1.MovableComponent.Swap(piece2.X, piece2.Y);
+                piece2.MovableComponent.Swap(tempPiece1X, tempPiece1Y);
+            });
+
             _pressedPiece = null;
             _enteredPiece = null;
         }
@@ -415,7 +421,7 @@ public class GridPlay : Grid
         else onEnd?.Invoke();
     }
 
-    public bool ClearAllValidMatchesAt(int x, int y)//, TweenCallback onEnd = null)
+    public bool ClearAllValidMatchesAt(int x, int y)
     {
         if (!_pieces[x, y].IsClearable() || (_pieces[x, y].IsMovable() && _pieces[x, y].MovableComponent.IsRunning()))
         {

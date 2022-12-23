@@ -34,7 +34,7 @@ public class UILevelMoveSetting : UILevelSetting
     {
         base.SetLevelData(mapData);
 
-        targetScore.text = ((BuildingMoveMap)mapData).LevelData.TargetScore.ToString();
-        numMove.text = ((BuildingMoveMap)mapData).LevelData.MoveAmount.ToString();
+        targetScore.text = ((BuildingMoveMap)mapData).LevelData.targetScore.ToString();
+        numMove.text = ((BuildingMoveMap)mapData).LevelData.moveAmount.ToString();
     }
 }

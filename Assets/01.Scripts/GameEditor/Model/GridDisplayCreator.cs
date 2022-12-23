@@ -44,24 +44,24 @@ public class GridDisplayCreator : MonoBehaviour {
     }
     public GridDisplay CreateGridDisplay (BuildingMap.GridData gridData)
     {
-        GridDisplay grid = Instantiate(gridPrefab, gridData.Position, gridData.Rotation, transform);
+        GridDisplay grid = Instantiate(gridPrefab, gridData.position, gridData.rotation, transform);
 
         try
         {
-            grid.SetName(int.Parse(gridData.Name.Split(' ')[1]));
+            grid.SetName(int.Parse(gridData.name.Split(' ')[1]));
         }
         catch (System.InvalidCastException ex)
         {
-            Debug.LogWarning($"grid name {gridData.Name} is not correct format/n" + ex.StackTrace);
+            Debug.LogWarning($"grid name {gridData.name} is not correct format/n" + ex.StackTrace);
         }
 
         grid.DrawGrid();
         grids.Add(grid);
 
-        grid.XDim = gridData.X;
-        grid.YDim = gridData.Y;
+        grid.XDim = gridData.x;
+        grid.YDim = gridData.y;
 
-        foreach (var piece in gridData.InitialPieces)
+        foreach (var piece in gridData.initialPieces)
         {
             foreach (var buildPiece in buildingButtonHandles)
             {
@@ -70,7 +70,7 @@ public class GridDisplayCreator : MonoBehaviour {
             }
         }
 
-        foreach (var column in gridData.LossFertilityColumns)
+        foreach (var column in gridData.lossFertilityColumns)
         {
             grid.InitLossFertilityColumn(column);
         }
@@ -82,15 +82,15 @@ public class GridDisplayCreator : MonoBehaviour {
     {
         foreach (var gridData in gridDatas)
         {
-            if (gridData.TargetGrids.Count == 0) continue;
+            if (gridData.targetGrids.Count == 0) continue;
 
-            GridDisplay grid = grids.Where(tempGrid => tempGrid.name == gridData.Name).ToArray()[0];
+            GridDisplay grid = grids.Where(tempGrid => tempGrid.name == gridData.name).ToArray()[0];
 
-            foreach (var targetData in gridData.TargetGrids)
+            foreach (var targetData in gridData.targetGrids)
             {
-                GridDisplay targetGrid = grids.Where(tempGrid => tempGrid.name == targetData.TargetGridName).ToArray()[0];
+                GridDisplay targetGrid = grids.Where(tempGrid => tempGrid.name == targetData.targetGridName).ToArray()[0];
 
-                foreach (var column in targetData.ConnectColumns)
+                foreach (var column in targetData.connectColumns)
                 {
                     grid.ConnectGrid(targetGrid, column.originColumn, column.targetColumn);
                 }
@@ -185,7 +185,7 @@ public class GridDisplayCreator : MonoBehaviour {
     public void SaveLevel (Action onSuccessful = null, Action<string> onFailed = null)
     {
         BuildingMap map = GenerateBuildingMap();
-        string mapName = GetMapName(false);
+        // string mapName = GetMapName(false);
 
 // #if UNITY_EDITOR
 //         AssetDatabase.CreateAsset(map, FileUtility.GetMapPathFromAssetsFolder() + '/' + mapName);
@@ -198,14 +198,18 @@ public class GridDisplayCreator : MonoBehaviour {
         APIAccessObject.Instance.StartCoroutine(Data.UpdateLevel(new KeyValuePair<int, BuildingMap>(int.Parse(GameEditorSystem.Instance.FileManager.Map.name), map), onSuccessful, onFailed));
     }
 
-    //TODO change assetDatabase into another to player can be create map after build
     public void GenerateLevel (Action onSuccessful = null, Action<string> onFailed = null)
     {
         BuildingMap map = GenerateBuildingMap();
-        string mapName = GetMapName(true);
+        // string mapName = GetMapName(true);
         // SaveMapToDatabase(map, mapName);
 
         APIAccessObject.Instance.StartCoroutine(Data.AddLevel(map, onSuccessful, onFailed));
+    }
+
+    public void DeleteLevel (uint levelNumber, Action onSuccessful = null, Action<string> onFailed = null)
+    {
+        APIAccessObject.Instance.StartCoroutine(Data.DeleteLevel(levelNumber, onSuccessful, onFailed));
     }
 
     public void ResetGrids ()

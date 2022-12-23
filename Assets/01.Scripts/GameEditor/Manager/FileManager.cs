@@ -16,54 +16,6 @@ public class FileManager : MonoBehaviour
         gameEditorSystem = GameEditorSystem.Instance;
     }
 
-    // private void GetMap ()
-    // {
-    //     if (string.IsNullOrEmpty(path)) return;
-
-    //     LoadMapData();
-
-    //     gameEditorSystem.GenerateMap(map);
-    // }
-
-//     //TODO change this function
-//     private void LoadMapData ()
-//     {
-// #if UNITY_EDITOR
-//         string assetPath = GetAssetPath(path);
-//         map = (BuildingMap)AssetDatabase.LoadAssetAtPath(assetPath, typeof(BuildingMap));
-
-//         if (map == null)
-//         {
-//             Debug.LogWarning($"file at {assetPath} is incorrect");
-//             throw new System.InvalidCastException($"file at {assetPath} is incorrect");
-//         }
-// #endif
-//     }
-
-    /// <summary>Get path from asset folder by computer path</summary>
-    // private string GetAssetPath (string path)
-    // {
-    //     string assetPath = "";
-    //     string[] folders = path.Split('/');
-    //     int beginFolder;
-
-    //     for (beginFolder = 0; beginFolder < folders.Length; beginFolder++)
-    //     {
-    //         if (folders[beginFolder] == "Assets")
-    //         {
-    //             assetPath = folders[beginFolder];
-    //             break;
-    //         }
-    //     }
-
-    //     for (beginFolder = beginFolder  + 1 ; beginFolder < folders.Length; beginFolder ++)
-    //     {
-    //         assetPath += "/" + folders[beginFolder];
-    //     }
-
-    //     return assetPath;
-    // }
-
     public void OpenExplorer ()
     {
         int max = Data.MaxLevel();
@@ -81,6 +33,7 @@ public class FileManager : MonoBehaviour
                 map = Data.GetMapInfor(level);
                 map.name = level.ToString();
                 gameEditorSystem.GenerateMap(map);
+                gameEditorSystem.ActiveDeleteMapButton();
             })
             .OnDeclineAction(() => {})
             .Show();
@@ -95,5 +48,6 @@ public class FileManager : MonoBehaviour
     {
         // path = null;
         map = null;
+        gameEditorSystem.DeactiveDeleteMapButton();
     }
 }

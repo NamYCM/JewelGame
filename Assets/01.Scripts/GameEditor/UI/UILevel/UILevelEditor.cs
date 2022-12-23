@@ -154,7 +154,7 @@ public class UILevelEditor : MonoBehaviour
 
     public void SetLevel (BuildingMap mapData)
     {
-        SwitchLevelType(mapData.StarScore.LevelType);
+        SwitchLevelType(mapData.StarScore.levelType);
         levelSetting.SetLevelData(mapData);
 
         ReloadUI();

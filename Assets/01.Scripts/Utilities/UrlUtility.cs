@@ -4,7 +4,12 @@ using UnityEngine;
 
 public static class UrlUtility
 {
-    private const string ORIGIN_URL = "https://us-central1-testapi-d3e3a.cloudfunctions.net";
+    //spring boot url
+    private const string ORIGIN_URL = "http://localhost:8080";
+    // public url
+    // private const string ORIGIN_URL = "https://jewel-api-v2.herokuapp.com";
+    
+    // private const string ORIGIN_URL = "https://us-central1-testapi-d3e3a.cloudfunctions.net";
     // local url
     // private const string ORIGIN_URL = "http://localhost:5001/testapi-d3e3a/us-central1";
 
@@ -30,10 +35,11 @@ public static class UrlUtility
     public static string SignInAdminUrl (string username, string password) => ORIGIN_URL + $"/login/sign-in-admin/{username}-{password}";
     public static string ResetPasswordAdminUrl (string email) => ORIGIN_URL + $"/login/reset-password-admin/{email}";
 
-    public const string ADD_MAP_URL = ORIGIN_URL + "/editLevelMap/add-map";
-    public const string UPDATE_MAP_URL = ORIGIN_URL + "/editLevelMap/update-map";
-    public const string GET_ALL_MAP_URL = ORIGIN_URL + "/getLevelMap/get-all-map";
-    public const string GET_CURRENT_VERSION_OF_MAP_URL = ORIGIN_URL + "/getLevelMap/get-current-version-of-map";
+    public const string ADD_MAP_URL = ORIGIN_URL + "/levelMap/add-map";
+    public const string UPDATE_MAP_URL = ORIGIN_URL + "/levelMap/update-map";
+    public const string GET_ALL_MAP_URL = ORIGIN_URL + "/levelMap/get-all-map";
+    public const string GET_CURRENT_VERSION_OF_MAP_URL = ORIGIN_URL + "/levelMap/get-current-version-of-map";
+    public static string DeleteMapUrl (uint levelNumber) =>  ORIGIN_URL + $"/levelMap/delete-map/{levelNumber}";
 
     public const string ALL_ITEM_URL = ORIGIN_URL + "/shop/all-items";
 }

@@ -21,15 +21,15 @@ public class BuildingMoveMap : BuildingMap
 
         if (levelSetting.Type != LevelType.MOVES) throw new System.InvalidOperationException("this is not move level");
 
-        levelData.TargetScore = ((UILevelMoveSetting)levelSetting).TargetScore;
-        levelData.MoveAmount = ((UILevelMoveSetting)levelSetting).NumMove;
+        levelData.targetScore = ((UILevelMoveSetting)levelSetting).TargetScore;
+        levelData.moveAmount = ((UILevelMoveSetting)levelSetting).NumMove;
     }
 
     [System.Serializable]
     public struct MoveLevelData
     {
         // public BuildingMap.StarScoreData StarScore;
-        public int TargetScore;
-        public int MoveAmount;
+        public int targetScore;
+        public int moveAmount;
     }
 }

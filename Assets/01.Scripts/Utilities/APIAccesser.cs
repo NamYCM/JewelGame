@@ -53,6 +53,29 @@ public static class APIAccesser
 
     public static IEnumerator LoginAdminCoroutine(string username, string password, Action<DataUser> onSuccessfulSignIn, Action<string> onFailedSignIn)
     {
+        // DataUser user = new DataUser();
+        // user.username = username; user.password = password;
+        // string bodyJsonString = JsonConvert.SerializeObject(user);;
+        // string url = "https://ptit-elearning.herokuapp.com/api/auth/signin";
+
+        // var request = new UnityWebRequest(url, "POST");
+        // byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(bodyJsonString);
+        // request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
+        // request.downloadHandler = (DownloadHandler) new DownloadHandlerBuffer();
+        // request.SetRequestHeader("Content-Type", "application/json");
+
+        // yield return request.SendWebRequest();
+
+        // if (request.responseCode == 200)
+        // {
+        //     onSuccessfulSignIn?.Invoke(user);
+        // }
+        // else
+        // {
+        //     string message = request.downloadHandler.text;
+        //     onFailedSignIn?.Invoke(message + request.responseCode);
+        // }
+
         using (UnityWebRequest www = UnityWebRequest.Get(UrlUtility.SignInAdminUrl(username, password)))
         {
             yield return www.SendWebRequest();
@@ -111,7 +134,6 @@ public static class APIAccesser
         Debug.Log(bodyJsonString);
 
         string url = UrlUtility.LOAD_ALL_MAP_URL;
-
         var request = new UnityWebRequest(url, "POST");
         byte[] bodyRaw = System.Text.Encoding.UTF8.GetBytes(bodyJsonString);
         request.uploadHandler = (UploadHandler) new UploadHandlerRaw(bodyRaw);
@@ -345,6 +367,36 @@ public static class APIAccesser
             string body = request.downloadHandler.text;
             Debug.Log(body);
             onFailedAdd?.Invoke(body);
+        }
+    }
+
+    public static IEnumerator DeleteMapCoroutine (uint levelNumber, Action onSucessful, Action<string> onFailed)
+    {
+        string url = UrlUtility.DeleteMapUrl(levelNumber);
+
+        using (UnityWebRequest www = UnityWebRequest.Delete(url))
+        {
+            www.SetRequestHeader("Authorization", Data.GetBearer());
+
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError)
+            {
+                throw new Exception("something wrong in send www request \n" + www.error);
+            }
+            else
+            {
+                // string body = www.downloadHandler.text;
+                if (www.responseCode == 200)
+                {
+                    Debug.Log("delete map succesful");
+                    onSucessful?.Invoke();
+                }
+                else
+                {
+                    onFailed?.Invoke("delete map failed!!");
+                }
+            }
         }
     }
 

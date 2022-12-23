@@ -122,6 +122,7 @@ public class Spawner : MonoBehaviour
     {
         try
         {
+            Debug.Log(originGrid.name + " " + xOrigin + " " + xTarget);   
             connectedColumns.Add(xTarget, new ConnectData() {
                 OriginGrid = originGrid,
                 X = xOrigin

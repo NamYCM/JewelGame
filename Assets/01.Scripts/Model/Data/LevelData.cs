@@ -67,7 +67,7 @@ public class LevelData
         }, onFailedGet);
     }
 
-    private IEnumerator GetCurrentVersion (Action<LevelData> onSucessfulGet, Action<string> onFailedGet)
+    static public IEnumerator GetCurrentVersion (Action<LevelData> onSucessfulGet, Action<string> onFailedGet)
     {
         yield return APIAccesser.GetCurrentVersionOfMapCoroutine(onSucessfulGet, onFailedGet);
     }
@@ -160,11 +160,11 @@ public class MapLevelData
         grids = mapData.Grids;
         starScore = mapData.StarScore;
 
-        if (mapData.StarScore.LevelType == LevelType.MOVES)
+        if (mapData.StarScore.levelType == LevelType.MOVES)
         {
             moveMapData = ((BuildingMoveMap)mapData).LevelData;
         }
-        else if (mapData.StarScore.LevelType == LevelType.TIMER)
+        else if (mapData.StarScore.levelType == LevelType.TIMER)
         {
             timeMapData = ((BuildingTimeLevel)mapData).LevelData;
         }
@@ -197,12 +197,12 @@ public class MapLevelData
     public BuildingMap ConvertToBuildingMap ()
     {
         BuildingMap buildingMap;
-        if (starScore.LevelType == LevelType.MOVES)
+        if (starScore.levelType == LevelType.MOVES)
         {
             buildingMap = new BuildingMoveMap();
             ((BuildingMoveMap)buildingMap).SetLevelData(moveMapData);
         }
-        else if (starScore.LevelType == LevelType.TIMER)
+        else if (starScore.levelType == LevelType.TIMER)
         {
             buildingMap = new BuildingTimeLevel();
             ((BuildingTimeLevel)buildingMap).SetLevelData(timeMapData);

@@ -19,14 +19,14 @@ public class BuildingTimeLevel : BuildingMap
 
         if (levelSetting.Type != LevelType.TIMER) throw new System.InvalidOperationException("this is not time level");
 
-        levelData.TargetScore = ((UILevelTimerSetting)levelSetting).TargetScore;
-        levelData.TimeInSecond = ((UILevelTimerSetting)levelSetting).TimeInSecond;
+        levelData.targetScore = ((UILevelTimerSetting)levelSetting).TargetScore;
+        levelData.timeInSecond = ((UILevelTimerSetting)levelSetting).TimeInSecond;
     }
 
     [System.Serializable]
     public struct TimeLevelData
     {
-        public int TargetScore;
-        public int TimeInSecond;
+        public int targetScore;
+        public int timeInSecond;
     }
 }
