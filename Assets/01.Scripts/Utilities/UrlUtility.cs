@@ -4,11 +4,14 @@ using UnityEngine;
 
 public static class UrlUtility
 {
-    //spring boot url
-    private const string ORIGIN_URL = "http://localhost:8080";
-    // public url
+    // spring boot url
+    // private const string ORIGIN_URL = "http://localhost:8080";
+    // public render url
+    private const string ORIGIN_URL = "https://jewel-game.onrender.com/";
+    // public heruku url
     // private const string ORIGIN_URL = "https://jewel-api-v2.herokuapp.com";
     
+    // Cloud function urls
     // private const string ORIGIN_URL = "https://us-central1-testapi-d3e3a.cloudfunctions.net";
     // local url
     // private const string ORIGIN_URL = "http://localhost:5001/testapi-d3e3a/us-central1";
