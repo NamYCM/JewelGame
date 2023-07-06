@@ -12,6 +12,7 @@ public class UIEditorController : MonoBehaviour {
     [SerializeField] Dropdown targetGridList;
     [SerializeField] Text editorMode;
     [SerializeField] UIModelWindow modelWindow;
+    [SerializeField] private GameObject _helpContainer;
     
     GameEditorSystem gameEditorSystem;
     UILevelEditor levelEditor;
@@ -27,6 +28,14 @@ public class UIEditorController : MonoBehaviour {
 
     private void Start() {
         gameEditorSystem = GameEditorSystem.Instance;
+    }
+
+    public void HandleOnHelpButtonClick()
+    {
+        if (_helpContainer == null)
+            return;
+        
+        _helpContainer.SetActive(!_helpContainer.activeInHierarchy);
     }
 
     private void ResetGridInfor ()
